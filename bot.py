@@ -7,11 +7,13 @@ from dotenv import load_dotenv
 import sys
 from allcommands import *
 from ankith import date_time
+from ankith import cryptography
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+test = os.getenv('DISCORD_TOKEN')
 guild_id = os.getenv('DISCORD_GUILD')
 
+TOKEN = cryptography.decrypt(test)
 client = discord.Client()
 
 @client.event
@@ -55,5 +57,5 @@ async def on_message(message):
             await showhelp(message)
         elif message.content.split()[0] == "$rules":
             await rules(message)
-keep_alive.keep_alive()
+#keep_alive.keep_alive()
 client.run(TOKEN)
