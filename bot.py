@@ -2,20 +2,11 @@ import os
 import json
 import discord.utils
 import discord
+import keep_alive
 from dotenv import load_dotenv
 import sys
 from allcommands import *
 from ankith import date_time
-with open("file.json","r") as JsonFile:
-    data = json.load(JsonFile)
-
-def savetojson(message,channel,author,data):
-    if channel not in data["all_channels"]:
-        data["channels"].update({channel:[]})
-        data["all_channels"].append(channel)
-    data["channels"][channel].append({"message":message,"author":author})
-    with open("file.json","w") as JsonFile:
-        json.dump(data,JsonFile,indent=4)
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -33,10 +24,9 @@ async def on_member_join(member):
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to my Discord server!'
     )
-all_commands = ["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help"]
+all_commands = ["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help","$rules"]
 @client.event
 async def on_message(message):
-    savetojson(str(message.content),str(message.channel),str(message.author),data)
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
     if message.author == client.user:
         return
@@ -63,4 +53,7 @@ async def on_message(message):
             await unmute(message,client)
         elif message.content.split()[0] == "$help":
             await showhelp(message)
+        elif message.content.split()[0] == "$rules":
+            await rules(message)
+keep_alive.keep_alive()
 client.run(TOKEN)
