@@ -92,19 +92,12 @@ async def filtermessage(message,client):
                 await channel.send("notice:\n"+str(message.author)+" sent a bad word in this server\n textchannel: "+str(message.chanel)+"\n full message: "+str(message.content))
 
 async def showhelp(message):
-    all_commands = ["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help","$rules"]
-    all_commands_false = ["sayhello","sendch","kick","remove_role","add_role","kick","mute","unmute","help","rules"]
-    helpinfo = {
-        "$help":"usage: `$help` or `$help <specific_command>`\n*former shows all commands and info. latter shows info about specific command*",
-        "$sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*.",
-        "$sendch":"usage: `$sench <channel_id> <message>`\n*sends the message to the specific channel.*",
-        "$kick":"usage: `$kick <user_id> <reason_for_kick>`\n*kicks the user from the server.*",
-        "$add_role":"usage: `$add_role <role_name> <user_id>`\n*adds a role to a person*",
-        "$remove_role":"usage: `$remove_role <role_name> <user_id>`\n*removes a role from a person*",
-        "$mute":"usage: `$mute <user_id>`\n*mutes a person (they cant send messages)*",
-        "$unmute":"usage: `$unmute <user_id>`\n*unmutes a person (they are now allowed to send messages)*",
-        "$rules":"usage: `$rules` or `$rules <rule_no>`\n*prints all the rules or individually*"
-    }
+    with open("data.json","r") as JsonFile:
+        data = json.load(JsonFile)
+    all_commands = data["all_commands"]
+    all_commands_false = data["all_commands_false"]
+    helpinfo = data["helpinfo"]
+    JsonFile.close()
     if len(message.content.split()) == 1:
         embed=discord.Embed(title="$modbot", description="$modbot is a bot for moderators made by the developer team at 'teen programming' here are all commands:", color=0x0066ff)
         for key,value in helpinfo.items():
@@ -126,17 +119,10 @@ async def showhelp(message):
                 await message.channel.send(embed=embed)
 
 async def rules(message):
-    string = [
-        "Be nice to one another, respect each other's opinions",
-        "Don't send hateful messages",
-        "No nsfw or inappropriate messages should be sent",
-        "If anyone encounters any issue, Ping the @Admin they will address the issue",
-        "No spamming please or pinging of @everyone",
-        "No racist or homophobic messages, photos ,videos etc",
-        "This is an English speaking server so speak in English to the best of your ability",
-        "Bot commands must be used only in #bots",
-        "People who do not abide with these rules will be banned or muted from the server"
-        ]
+    with open("data.json","r") as JsonFile:
+        data = json.load(JsonFile)
+    string = data["rules"]
+    JsonFile.close()
     array = message.content.split()
     if len(array) == 1:
         embed=discord.Embed(title="Rules of the server:",url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",description="everyone is supposed to follow these:",color=0x0066ff)

@@ -2,7 +2,6 @@ import os
 import json
 import discord.utils
 import discord
-import keep_alive
 from dotenv import load_dotenv
 import sys
 from allcommands import *
@@ -26,7 +25,10 @@ async def on_member_join(member):
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to my Discord server!'
     )
-all_commands = ["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help","$rules"]
+with open("data.json","r") as JsonFile:
+    data = json.load(JsonFile)
+all_commands = data["all_commands"]
+JsonFile.close()
 @client.event
 async def on_message(message):
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
@@ -57,5 +59,4 @@ async def on_message(message):
             await showhelp(message)
         elif message.content.split()[0] == "$rules":
             await rules(message)
-#keep_alive.keep_alive()
 client.run(TOKEN)
