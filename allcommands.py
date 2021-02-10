@@ -1,4 +1,5 @@
 import discord
+import json
 import discord.utils
 from ankith import date_time
 async def pingedunnecessary(message,client):
@@ -125,9 +126,8 @@ async def rules(message):
     JsonFile.close()
     array = message.content.split()
     if len(array) == 1:
-        embed=discord.Embed(title="Rules of the server:",url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",description="everyone is supposed to follow these:",color=0x0066ff)
-        for i in range(len(string)):
-            embed.add_field(name="**#"+str(i+1)+"**",value=string[i],inline=True)
+        embed=discord.Embed(title="Rules of the server:",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/rules.html",description="You can get a copy of the server rules from our github repository",color=0x0066ff)
+        embed.add_field(name="click here for the server rules",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/rules.html",value="by joining this server, you agree to follow the rules")
         embed.set_footer(text="Developed by Ankith101.rar")
         await message.channel.send(embed=embed)
     elif len(array) == 2:

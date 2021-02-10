@@ -25,6 +25,8 @@ async def on_member_join(member):
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to my Discord server!'
     )
+    role = discord.utils.get(message.guild.roles, name="developer")
+    await member.add_roles(role)
 with open("data.json","r") as JsonFile:
     data = json.load(JsonFile)
 all_commands = data["all_commands"]
