@@ -4,9 +4,9 @@ import discord.utils
 import discord
 from dotenv import load_dotenv
 import sys
-from allcommands import *
-from ankith import date_time
-from ankith import cryptography
+from resources.allcommands import *
+from resources.ankith import date_time
+from resources.ankith import cryptography
 
 load_dotenv()
 test = os.getenv('DISCORD_TOKEN')
@@ -27,7 +27,7 @@ async def on_member_join(member):
     )
     role = discord.utils.get(message.guild.roles, name="developer")
     await member.add_roles(role)
-with open("data.json","r") as JsonFile:
+with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 all_commands = data["all_commands"]
 JsonFile.close()
