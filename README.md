@@ -1,2 +1,2 @@
 # modbot-discord
-bot made for "teen programming" server
+bot made for "AVAMOAGHOS" server
