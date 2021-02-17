@@ -16,6 +16,11 @@ TOKEN = cryptography.decrypt(test)
 client = discord.Client()
 
 @client.event
+async def on_raw_message_delete(message):
+    if str(message.cached_message.author.name) == "$modbot":
+        await message.cached_message.channel.send("please stop deleting my messages, you better follow the rules and dont misuse power")
+
+@client.event
 async def on_ready():
     print(f'{client.user.name} has connected to Discord!')
 
@@ -61,4 +66,8 @@ async def on_message(message):
             await showhelp(message)
         elif message.content.split()[0] == "$rules":
             await rules(message)
+        elif message.content.split()[0] == "$silence":
+            await silence(message)
+        elif message.content.split()[0] == "$unsilence":
+            await unsilence(message)
 client.run(TOKEN)

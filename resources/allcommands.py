@@ -19,9 +19,14 @@ async def kick(message,client):
         user = await message.guild.fetch_member(int(array[1]))
         name = user.name
         await user.kick()
-        await message.channel.send(str(name)+" has been kicked from the server")
+        #sending to initial channel
+        embed=discord.Embed(title="Kicked.",description=str(name)+" has been kicked from the server",color=0x0066ff)
+        embed.set_footer(text="developed by ankith101.rar")
+        await message.channel.send(embed=embed)
+        #sending to #notices
         channel = client.get_channel(807532505137545217) 
-        await channel.send("notice:\n"+str(user.name)+" has been kicked by "+str(message.author)+"\nchannel: "+str(message.channel)+"\nreason: "+" ".join(array[2:len(array)]))
+        embed=discord.Embed(title="Notice: Kick",description=+str(user.name)+" has been kicked by "+str(message.author)+"\nchannel: "+str(message.channel)+"\nreason: "+" ".join(array[2:len(array)]),color=0x0066ff)
+        await channel.send(embed=embed)
         await user.create_dm()
         await user.dm_channel.send("bruv you just got kicked from "+str(message.guild)+" by "+str(message.author)+"\n reason was: "+" ".join(array[2:len(array)]))
     else:
@@ -42,7 +47,7 @@ async def removerole(message):
 
 async def addrole(message):
     array = message.content.split()
-    if "Admin" in str(message.author.roles) or "ankith101.rar" in str(user.name):
+    if "Admin" in str(message.author.roles) or "ankith101.rar" in str(message.author):
         user = await message.guild.fetch_member(int(array[2]))
         role = discord.utils.get(message.guild.roles, name=array[1])
         if array[1] in str(user.roles):
@@ -58,14 +63,26 @@ async def mute(message,client):
         array = message.content.split()
         member = await message.guild.fetch_member(int(array[1]))
         role = discord.utils.get(message.guild.roles, name='muted')
+        reason = " ".join(array[2:len(array)])
         await member.add_roles(role)
-        await message.channel.send(str(member.mention)+" has been muted by "+str(message.author)+"\n reason: `"+" ".join(array[2:len(array)])+"`")
+        #sending message to initial channel
+        embed=discord.Embed(title="Muted",description=str(member.mention)+" has been muted by "+str(message.author)+"\n**reason**: "+reason,color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await message.channel.send(embed=embed)
+        #sending message to dm
         await member.create_dm()
-        await member.dm_channel.send("bro you just got muted by "+str(message.author)+"\n reason was: "+" ".join(array[2:len(array)]))
-        channel = client.get_channel(807532505137545217) 
-        await channel.send("notice:\n"+str(member.name)+" has been muted by "+str(message.author)+"\nchannel: "+str(message.channel)+"\nreason: "+" ".join(array[2:len(array)]))
+        embed=discord.Embed(title="Infraction:",description="you have been muted by "+str(message.author)+"\n**reason**: "+reason,color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await member.dm_channel.send(embed=embed)
+        #sending message to #notices
+        channel = client.get_channel(807532505137545217)
+        embed=discord.Embed(title="notice: mute",description=str(member.name)+" has been muted by "+str(message.author)+"\n**reason**: "+reason+"\n**channel**: "+str(message.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await channel.send(embed=embed)
     else:
-        await message.channel.send(str(message.author.mention)+" you are not allowed to use that command")
+        embed=discord.Embed(name="Nope.",description=str(message.author.mention)+" you arent allowed to use that command",color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await message.channel.send(embed=embed)
 
 async def unmute(message,client):
     if "Admin" in str(message.author.roles):
@@ -73,16 +90,22 @@ async def unmute(message,client):
         user = await message.guild.fetch_member(int(array[1]))
         role = discord.utils.get(message.guild.roles, name='muted')
         await user.remove_roles(role)
-        await message.channel.send(str(user.mention)+" has been unmuted by "+str(message.author))
+        embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await message.channel.send(embed=embed)
         await user.create_dm()
-        await user.dm_channel.send("ok you got unmuted by "+str(message.author)+"\nyou are allowed to send messages now")
+        embed=discord.Embed(title="Unmuted",description=str(user.name)+", you are now allowed to send messages in "+str(message.guild),color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await user.dm_channel.send(embed=embed)
     else:
-        await message.channel.send(str(message.author.mention)+" you are not allowed to use that command")
+        embed=discord.Embed(name="Nope.",description=str(message.author.mention)+" you arent allowed to use that command",color=0x0066ff)
+        embed.set_footer(text="Developed by Ankith101.rar")
+        await message.channel.send(embed=embed)
 
 async def filtermessage(message,client):
     if "@everyone" in message.content:
         await pingedunnecessary(message,client)
-    for item in ["fuck","bitch","cumshot","asshole","wtf"]:
+    for item in ["fuck","bitch","cumshot","asshole","wtf","retard"]:
         if item in message.content:
             if "Admin" in str(message.author.roles):
                 pass
@@ -90,10 +113,10 @@ async def filtermessage(message,client):
                 await message.delete()
                 await message.channel.send(str(message.author.mention)+" please dont use bad words in this server")
                 channel = client.get_channel(807532505137545217) 
-                await channel.send("notice:\n"+str(message.author)+" sent a bad word in this server\n textchannel: "+str(message.chanel)+"\n full message: "+str(message.content))
+                await channel.send("notice:\n"+str(message.author)+" sent a bad word in this server\n textchannel: "+str(message.channel)+"\n full message: "+str(message.content))
 
 async def showhelp(message):
-    with open("data.json","r") as JsonFile:
+    with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     all_commands = data["all_commands"]
     all_commands_false = data["all_commands_false"]
@@ -120,18 +143,29 @@ async def showhelp(message):
                 await message.channel.send(embed=embed)
 
 async def rules(message):
-    with open("data.json","r") as JsonFile:
+    with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     string = data["rules"]
     JsonFile.close()
     array = message.content.split()
     if len(array) == 1:
-        embed=discord.Embed(title="Rules of the server:",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/rules.html",description="You can get a copy of the server rules from our github repository",color=0x0066ff)
-        embed.add_field(name="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/rules.html",value="by joining this server, you agree to follow the rules")
-        embed.set_footer(text="Developed by Ankith101.rar")
+        embed=discord.Embed(title="Rules of the server:",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html",description="You can get a copy of the server rules from our website\n [click here](https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html) to view the rules",color=0x0066ff)
+        embed.set_footer(text="website by Aadi, bot developed by Ankith101")
         await message.channel.send(embed=embed)
     elif len(array) == 2:
         if int(array[1]) <= len(string) and int(array[1]) >= 1:
             embed=discord.Embed(title="Rules",description="**#"+str(array[1])+".** "+string[int(array[1])-1],color=0x0066ff)
             embed.set_footer(text="Developed by Ankith101.rar")
             await message.channel.send(embed=embed)
+
+async def silence(message):
+    if "Admin" in str(message.author.roles):
+        role = discord.utils.get(message.guild.roles, name="developer")
+        await message.channel.set_permissions(role, send_messages=False)
+        await message.channel.send("'"+str(message.channel)+"' has been silenced by "+str(message.author))
+
+async def unsilence(message):
+    if "Admin" in str(message.author.roles):
+        role = discord.utils.get(message.guild.roles, name="developer")
+        await message.channel.set_permissions(role, send_messages=True)
+        await message.channel.send("'"+str(message.channel)+"'' has been unsilenced by "+str(message.author))
