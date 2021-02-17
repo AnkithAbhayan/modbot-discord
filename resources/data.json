@@ -21,6 +21,6 @@
         "$unmute":"usage: `$unmute <user_id>`\n*unmutes a person (they are now allowed to send messages)*",
         "$rules":"usage: `$rules` or `$rules <rule_no>`\n*prints all the rules or individually*"
     },
-    "all_commands":["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help","$rules"],
-    "all_commands_false":["sayhello","sendch","kick","remove_role","add_role","kick","mute","unmute","help","rules"]
+    "all_commands":["$sayhello","$sendch","$kick","$remove_role","$add_role","$kick","$mute","$unmute","$help","$rules","$silence","$unsilence"],
+    "all_commands_false":["sayhello","sendch","kick","remove_role","add_role","kick","mute","unmute","help","rules","silence","unsilence"]
 }
