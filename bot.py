@@ -9,10 +9,9 @@ from resources.ankith import date_time
 from resources.ankith import cryptography
 
 load_dotenv()
-test = os.getenv('DISCORD_TOKEN')
-guild_id = os.getenv('DISCORD_GUILD')
+TOKEN = os.getenv('DISCORD_TOKEN')
+guild_id = 796012940477595689
 
-TOKEN = cryptography.decrypt(test)
 client = discord.Client()
 
 @client.event
@@ -70,4 +69,6 @@ async def on_message(message):
             await silence(message)
         elif message.content.split()[0] == "$unsilence":
             await unsilence(message)
+        elif message.content.split()[0] == "$warn":
+            await warn(message,client)
 client.run(TOKEN)
