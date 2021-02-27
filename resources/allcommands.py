@@ -155,6 +155,9 @@ async def rules(message):
     with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     string = data["rules"]
+    rulesfull = data["rulesfull"]
+    rulesfull = rulesfull.split("|")
+    print(rulesfull)
     JsonFile.close()
     array = message.content.split()
     if len(array) == 1:
@@ -162,9 +165,12 @@ async def rules(message):
         embed.set_footer(text="website by Aadi, bot developed by Ankith101")
         await message.channel.send(embed=embed)
     elif len(array) == 2:
-        if int(array[1]) <= len(string) and int(array[1]) >= 1:
+        if array[1] == "full":
+            embed=discord.Embed(title="RULES of AVAMOAGHOS server:",description="\n".join(rulesfull),color=0x0066ff)
+            embed.set_footer(text="developed by ankith101.rar")
+            await message.channel.send(embed=embed)
+        elif int(array[1]) <= len(string) and int(array[1]) >= 1:
             embed=discord.Embed(title="Rules",description="**#"+str(array[1])+".** "+string[int(array[1])-1],color=0x0066ff)
-
             await message.channel.send(embed=embed)
 
 async def silence(message):
