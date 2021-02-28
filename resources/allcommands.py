@@ -1,7 +1,7 @@
 import discord
 import json
 import discord.utils
-from ankith import date_time
+from resources.ankith import date_time
 with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 notice_channel_id = data["notice_channel"]

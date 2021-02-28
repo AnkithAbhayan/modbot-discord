@@ -4,9 +4,9 @@ import discord.utils
 import discord
 from dotenv import load_dotenv
 import sys
-from resources import *
-from resources import ankith.date_time
-from resources import ankith.cryptography
+from resources.ankith import date_time
+from resources.ankith import cryptography
+from resources.allcommands import *
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
