@@ -62,11 +62,11 @@ async def addrole(message):
         user = await message.guild.fetch_member(int(array[2]))
         role = discord.utils.get(message.guild.roles, name=array[1])
         if array[1] in str(user.roles):
-            embed=discord.Embed(title="Already has the role",description=str(user.name)+" already has the "+str(role.name)+" role",color=0x0066ff)
+            embed=discord.Embed(title="Already has the role",description=str(user.name)+" already has the `"+str(role.name)+"` role",color=0x0066ff)
             await message.channel.send(embed=embed)
         else:
             await user.add_roles(role)
-            embed=discord.Embed(title="Role has been added",description=str(user.mention)+" has been given the "+str(role.name)+" role",color=0x0066ff)
+            embed=discord.Embed(title="Role has been added",description=str(user.mention)+" has been given the `"+str(role.name)+"` role",color=0x0066ff)
             await message.channel.send(embed=embed)
     else:
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)

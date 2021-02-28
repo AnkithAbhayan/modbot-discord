@@ -44,7 +44,7 @@ async def on_message(message):
     if message.channel.id == 807532505137545217:
         await message.delete()
     if message.content.split()[0] in all_commands:
-        if message.channel.id != 796562613412560936 and "Admin" not in str(message.author.roles):
+        if message.channel.id != 815490707233701893 and "Admin" not in str(message.author.roles):
             await message.channel.send(str(message.author.mention)+" you cant use that command here.\n goto #bots")
             return
         if message.content == '$sayhello':
