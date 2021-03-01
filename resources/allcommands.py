@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 import os
 from resources.ankith import date_time
 load_dotenv()
-my_client_id = os.getenv(CLIENT_ID)
-my_client_secret = os.getenv(CLIENT_SECRET)
-my_user_agent = os.getenv(USER_AGENT)
+my_client_id = os.getenv("CLIENT_ID")
+my_client_secret = os.getenv("CLIENT_SECRET")
+my_user_agent = os.getenv("USER_AGENT")
 with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 notice_channel_id = data["notice_channel"]
