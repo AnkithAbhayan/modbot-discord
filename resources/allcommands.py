@@ -1,7 +1,13 @@
 import discord
+import praw
 import json
 import discord.utils
+import os
 from resources.ankith import date_time
+load_dotenv()
+my_client_id = os.getenv(CLIENT_ID)
+my_client_secret = os.getenv(CLIENT_SECRET)
+my_user_agent = os.getenv(USER_AGENT)
 with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 notice_channel_id = data["notice_channel"]
@@ -213,3 +219,19 @@ async def warn(message,client):
     else:
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await message.channel.send(embed=embed)
+
+async def meme(message):
+    reddit = praw.Reddit(
+        client_id=my_client_id,
+        client_secret=my_client_secret,
+        user_agent=my_user_agent,
+    )
+    print(reddit.read_only)
+    while True:
+        sr = reddit.subreddit("programmerhumor").random()
+        if not sr.is_self:
+            slink = sr.url
+            print(str(slink))
+            break
+        else:
+            continue
