@@ -232,7 +232,9 @@ async def meme(message):
         sr = reddit.subreddit("programmerhumor").random()
         if not sr.is_self:
             slink = sr.url
-            print(str(slink))
+            embed=discord.Embed(title="title:"+str(sr.title),description="posted by u/"+str(sr.author)+"\n"+str(sr.score)+" upvotes",color=0x0066ff)
+            embed.set_image(url=str(sr.url))
+            await message.channel.send(embed=embed)
             break
         else:
             continue
