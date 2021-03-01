@@ -2,6 +2,7 @@ import discord
 import praw
 import json
 import discord.utils
+from dotenv import load_dotenv
 import os
 from resources.ankith import date_time
 load_dotenv()
