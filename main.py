@@ -7,6 +7,7 @@ import sys
 from resources.ankith import date_time
 from resources.ankith import cryptography
 from resources.allcommands import *
+from keep_alive import keep_alive
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -74,4 +75,5 @@ async def on_message(message):
             await warn(message,client)
         elif message.content.split()[0] == "$meme":
             await meme(message)
+keep_alive()
 client.run(TOKEN)
