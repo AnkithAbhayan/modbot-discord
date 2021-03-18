@@ -49,7 +49,7 @@ async def kick(message,client):
 
 async def removerole(message):
     array = message.content.split()
-    if "Admin" in str(message.author.roles):
+    if "Owner" in str(message.author.roles):
         user = await message.guild.fetch_member(int(array[2]))
         role = discord.utils.get(message.guild.roles, name=array[1])
         if array[1] not in str(user.roles):
@@ -65,7 +65,7 @@ async def removerole(message):
 
 async def addrole(message):
     array = message.content.split()
-    if "Admin" in str(message.author.roles):
+    if "Owner" in str(message.author.roles):
         user = await message.guild.fetch_member(int(array[2]))
         role = discord.utils.get(message.guild.roles, name=array[1])
         if array[1] in str(user.roles):
