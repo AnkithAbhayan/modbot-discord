@@ -42,8 +42,6 @@ async def on_message(message):
     if message.author == client.user:
         return
     await filtermessage(message,client)
-    if message.channel.id == 807532505137545217:
-        await message.delete()
     if message.content.split()[0] in all_commands:
         if message.channel.id != 815490707233701893: 
             if "Admin" not in str(message.author.roles) and message.content.split()[0] != "$meme":
