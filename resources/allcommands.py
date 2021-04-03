@@ -14,6 +14,10 @@ with open("resources/data.json","r") as JsonFile:
 notice_channel_id = data["notice_channel"]
 print(notice_channel_id)
 JsonFile.close()
+
+async def sayhello(message,client):
+    await message.channel.send(f"Hello there!, {message.author.mention}")
+
 async def pingedunnecessary(message,client):
     embed=discord.Embed(title="Dont do it",description=str(message.author.mention)+" please dont try to ping everyone",color=0x0066ff)
     await message.channel.send(embed=embed)
