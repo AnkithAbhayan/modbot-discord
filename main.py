@@ -47,7 +47,7 @@ async def on_message(message):
             if message.content.split()[0] == "$meme" and message.channel.id != 809074960890069022:
                 await message.channel.send(str(message.author.mention)+" you are not allowed to use that command here.\n goto <#809074960890069022>")
                 return
-            elif message.channel.id != 815490707233701893:
+            elif message.content.split()[0] != "$meme" and message.channel.id != 815490707233701893:
                 await message.channel.send(str(message.author.mention)+" you are not allowed to use that command here.\n goto <#815490707233701893>")
                 return
         if function:=(command_palette.get(message.content.split()[0])):
