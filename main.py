@@ -45,10 +45,12 @@ async def on_message(message):
     if message.content.split()[0] in all_commands:
         if "Admin" not in str(message.author.roles):
             if message.content.split()[0] == "$meme" and message.channel.id != 809074960890069022:
-                await message.channel.send(str(message.author.mention)+" you are not allowed to use that command here.\n goto <#809074960890069022>")
+                embed = discord.Embed(title="Nope.",description=str(message.author.mention)+", you are not allowed to use that command here.\n goto <#809074960890069022>",color=0x0066ff)
+                await message.channel.send(embed=embed)
                 return
             elif message.content.split()[0] != "$meme" and message.channel.id != 815490707233701893:
-                await message.channel.send(str(message.author.mention)+" you are not allowed to use that command here.\n goto <#815490707233701893>")
+                embed = discord.Embed(title="Nope.",description=str(message.author.mention)+", you are not allowed to use that command here.\n goto <#815490707233701893>",color=0x0066ff)
+                await message.channel.send(embed=embed)
                 return
         if function:=(command_palette.get(message.content.split()[0])):
             await function(message,client)
