@@ -47,7 +47,7 @@ async def kick(message,client):
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await message.channel.send(embed=embed)
 
-async def removerole(message):
+async def removerole(message,client):
     array = message.content.split()
     if "Owner" in str(message.author.roles):
         user = await message.guild.fetch_member(int(array[2]))
@@ -63,7 +63,7 @@ async def removerole(message):
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await message.channel.send(embed=embed)
 
-async def addrole(message):
+async def addrole(message,client):
     array = message.content.split()
     if "Owner" in str(message.author.roles):
         user = await message.guild.fetch_member(int(array[2]))
@@ -119,19 +119,16 @@ async def unmute(message,client):
 async def filtermessage(message,client):
     if "@everyone" in message.content:
         await pingedunnecessary(message,client)
-    for item in ["fuck","bitch","cumshot","asshole","wtf","retard"]:
+    for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
         if item in message.content:
             if "Admin" in str(message.author.roles):
                 pass
             else:
-                await message.delete()
-                embed=discord.Embed(title="Curse word detected:",description=str(message.author.mention)+" please dont use bad words in this server",color=0x0066ff)
-                await message.channel.send(embed=embed)
                 channel = client.get_channel(notice_channel_id)
                 embed=discord.Embed(title="Notice: **language breach**",description="**"+str(message.author)+"** sent a bad word in this server\n **textchannel**: "+str(message.channel)+"\n **full message**: "+str(message.content)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff) 
                 await channel.send(embed=embed)
 
-async def showhelp(message):
+async def showhelp(message,client):
     with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     all_commands = data["all_commands"]
@@ -158,7 +155,7 @@ async def showhelp(message):
             embed=discord.Embed(title="Unknown command: `"+str(command)+"`",description="idk what you typed, check the spelling",color=0x0066ff)
             await message.channel.send(embed=embed)
 
-async def rules(message):
+async def rules(message,client):
     with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     string = data["rules"]
@@ -180,7 +177,7 @@ async def rules(message):
             embed=discord.Embed(title="Rules",description="**#"+str(array[1])+".** "+string[int(array[1])-1],color=0x0066ff)
             await message.channel.send(embed=embed)
 
-async def silence(message):
+async def silence(message,client):
     if "Admin" in str(message.author.roles):
         role = discord.utils.get(message.guild.roles, name="developer")
         await message.channel.set_permissions(role, send_messages=False)
@@ -190,7 +187,7 @@ async def silence(message):
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await message.channel.send(embed=embed)
 
-async def unsilence(message):
+async def unsilence(message,client):
     if "Admin" in str(message.author.roles):
         role = discord.utils.get(message.guild.roles, name="developer")
         await message.channel.set_permissions(role, send_messages=True)
@@ -221,7 +218,7 @@ async def warn(message,client):
         embed=discord.Embed(title="Invalid Permissions",description=str(message.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await message.channel.send(embed=embed)
 
-async def meme(message):
+async def meme(message,client):
     reddit = praw.Reddit(
         client_id=my_client_id,
         client_secret=my_client_secret,

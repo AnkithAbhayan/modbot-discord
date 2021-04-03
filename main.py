@@ -5,7 +5,6 @@ import discord
 from dotenv import load_dotenv
 import sys
 from resources.ankith import date_time
-from resources.ankith import cryptography
 from resources.allcommands import *
 from keep_alive import keep_alive
 
@@ -35,6 +34,7 @@ async def on_member_join(member):
 with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 all_commands = data["all_commands"]
+command_palette = {"$sayhello":sayhello,"$sendch":sendch,"$remove_role":removerole,"$add_role":addrole,"$mute":mute,"$unmute":unmute,"$warn":warn,"$kick":kick,"$help":showhelp,"$rules":rules,"$silence":silence,"$unsilence":unsilence,"$meme":meme}
 JsonFile.close()
 @client.event
 async def on_message(message):
@@ -47,31 +47,7 @@ async def on_message(message):
             if "Admin" not in str(message.author.roles) and message.content.split()[0] != "$meme":
                 await message.channel.send(str(message.author.mention)+" you cant use that command here.\n goto #bots or #memes")
                 return
-        if message.content == '$sayhello':
-            await message.channel.send("hello! "+str(message.author.mention))
-        elif message.content.split()[0] == "$sendch":
-            await sendch(message,client)
-        elif message.content.split()[0] == "$kick":
-            await kick(message,client)
-        elif message.content.split()[0] == "$remove_role":
-            await removerole(message)
-        elif message.content.split()[0] == "$add_role":            
-            await addrole(message)
-        elif message.content.split()[0] == "$mute":
-            await mute(message,client)
-        elif message.content.split()[0] == "$unmute":
-            await unmute(message,client)
-        elif message.content.split()[0] == "$help":
-            await showhelp(message)
-        elif message.content.split()[0] == "$rules":
-            await rules(message)
-        elif message.content.split()[0] == "$silence":
-            await silence(message)
-        elif message.content.split()[0] == "$unsilence":
-            await unsilence(message)
-        elif message.content.split()[0] == "$warn":
-            await warn(message,client)
-        elif message.content.split()[0] == "$meme":
-            await meme(message)
+        if function:=(command_palette.get(message.content.split()[0])):
+            await function(message,client)
 keep_alive()
 client.run(TOKEN)
