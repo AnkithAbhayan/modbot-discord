@@ -4,6 +4,7 @@ import json
 import discord.utils
 from dotenv import load_dotenv
 import os
+import re
 from resources.ankith import date_time
 load_dotenv()
 my_client_id = os.getenv("CLIENT_ID")
@@ -34,7 +35,10 @@ async def sendch(message,client):
 async def kick(message,client):
     array = message.content.split()
     if "Admin" in str(message.author.roles):
-        user = await message.guild.fetch_member(int(array[1]))
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
+        user = await message.guild.fetch_member(victim)
         name = user.name
         await user.kick()
         #sending to initial channel
@@ -86,7 +90,10 @@ async def addrole(message,client):
 async def mute(message,client):
     if "Admin" in str(message.author.roles):
         array = message.content.split()
-        member = await message.guild.fetch_member(int(array[1]))
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
+        member = await message.guild.fetch_member(victim)
         role = discord.utils.get(message.guild.roles, name='muted')
         reason = " ".join(array[2:len(array)])
         await member.add_roles(role)
@@ -108,7 +115,10 @@ async def mute(message,client):
 async def unmute(message,client):
     if "Admin" in str(message.author.roles):
         array = message.content.split()
-        user = await message.guild.fetch_member(int(array[1]))
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
+        user = await message.guild.fetch_member(victim)
         role = discord.utils.get(message.guild.roles, name='muted')
         await user.remove_roles(role)
         embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=0x0066ff)
