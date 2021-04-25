@@ -271,7 +271,6 @@ async def meme(ctx,*args):
 def setup(bot):
     bot.add_command(sayhello)
     bot.add_command(rules)
-    bot.add_command(sayhello)
     bot.add_command(sendch)
     bot.add_command(add_role)
     bot.add_command(remove_role)
