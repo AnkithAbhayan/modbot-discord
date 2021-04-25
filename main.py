@@ -38,7 +38,6 @@ async def on_member_join(member):
 with open("resources/data.json","r") as JsonFile:
     data = json.load(JsonFile)
 all_commands = data["all_commands"]
-command_palette = {"$sayhello":sayhello,"$sendch":sendch,"$remove_role":removerole,"$add_role":addrole,"$mute":mute,"$unmute":unmute,"$warn":warn,"$kick":kick,"$help":showhelp,"$rules":rules,"$silence":silence,"$unsilence":unsilence,"$meme":meme}
 JsonFile.close()
 @bot.event
 async def on_message(message):
