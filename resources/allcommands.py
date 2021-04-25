@@ -59,7 +59,7 @@ async def kick(ctx,*args):
         await ctx.channel.send(embed=embed)
 
 @commands.command(name='remove_role')
-async def removerole(ctx,*args):
+async def remove_role(ctx,*args):
     array = ctx.content.split()
     if "Owner" in str(ctx.author.roles):
         user = await ctx.guild.fetch_member(int(array[2]))
@@ -76,7 +76,7 @@ async def removerole(ctx,*args):
         await ctx.channel.send(embed=embed)
 
 @commands.command(name='add_role')
-async def addrole(ctx,*args):
+async def add_role(ctx,*args):
     array = ctx.content.split()
     if "Owner" in str(ctx.author.roles):
         user = await ctx.guild.fetch_member(int(array[2]))
@@ -108,7 +108,7 @@ async def mute(ctx,*args):
         await ctx.channel.send(embed=embed)
         #sending ctx to dm
         await member.create_dm()
-        embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
+        embed=discord.Embedi(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
         await member.dm_channel.send(embed=embed)
         #sending ctx to #notices
         channel = bot.get_channel(notice_channel_id)
