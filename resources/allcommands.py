@@ -183,7 +183,7 @@ async def rules(ctx,*args):
     with open("resources/data.json","r") as JsonFile:
         data = json.load(JsonFile)
     string = data["rules"]
-    rulesfull message = data["rulesfull message"]
+    rulesfull = data["rulesfull message"]
     rulesfull = rulesfull.split("|")
     print(rulesfull)
     JsonFile.close()
