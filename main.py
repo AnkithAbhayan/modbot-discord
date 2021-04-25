@@ -35,10 +35,6 @@ async def on_member_join(member):
     role = discord.utils.get(message.guild.roles, name="developer")
     await member.add_roles(role)
 
-with open("resources/data.json","r") as JsonFile:
-    data = json.load(JsonFile)
-all_commands = data["all_commands"]
-JsonFile.close()
 @bot.event
 async def on_message(message):
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
