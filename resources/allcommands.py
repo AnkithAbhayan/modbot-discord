@@ -227,9 +227,11 @@ async def unsilence(ctx,*args):
 async def warn(ctx,*args):
     if "Admin" in str(ctx.author.roles):
         array = ctx.message.content.split()
-        user_id = array[1]
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
         reason = " ".join(array[2:len(array)])
-        user = await ctx.guild.fetch_member(int(array[1]))
+        user = await ctx.guild.fetch_member(victim)
         #sending to initial channel
         embed=discord.Embed(title="Warning",description="applied warning to "+str(user.name)+"\n**reason**: "+reason,color=0x0066ff)
         await ctx.channel.send(embed=embed)
