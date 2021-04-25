@@ -41,6 +41,7 @@ async def on_message(message):
     if message.author == bot.user:
         return
     await filtermessage(message,bot)
+    await bot.process_commands(message)
     """
     if message.content.split()[0] in all_commands:
         if "Admin" not in str(message.author.roles):
