@@ -60,4 +60,4 @@ async def on_message(message):
             await function(message,client)
     """
 keep_alive()
-client.run(TOKEN)
+bot.run(TOKEN)
