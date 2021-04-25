@@ -281,3 +281,4 @@ def setup(bot):
     bot.add_command(silence)
     bot.add_command(unsilence)
     bot.add_command(warn)
+    bot.add_command(showhelp)
