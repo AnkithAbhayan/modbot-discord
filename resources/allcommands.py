@@ -137,7 +137,7 @@ async def unmute(ctx,*args):
         embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=0x0066ff)
         await ctx.channel.send(embed=embed)
 
-async def filterctx(ctx,bot):
+async def filtermessage(ctx,bot):
     if "@everyone" in ctx.content:
         await pingedunnecessary(ctx,bot)
     for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
