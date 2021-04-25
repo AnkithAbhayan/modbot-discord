@@ -38,7 +38,10 @@ async def sendch(ctx,*args):
 async def kick(ctx,*args):
     array = ctx.content.split()
     if "Admin" in str(ctx.author.roles):
-        user = await ctx.guild.fetch_member(int(array[1]))
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
+        user = await ctx.guild.fetch_member(victim)
         name = user.name
         await user.kick()
         #sending to initial channel
@@ -93,7 +96,10 @@ async def addrole(ctx,*args):
 async def mute(ctx,*args):
     if "Admin" in str(ctx.author.roles):
         array = ctx.content.split()
-        member = await ctx.guild.fetch_member(int(array[1]))
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
+        member = await ctx.guild.fetch_member(victim)
         role = discord.utils.get(ctx.guild.roles, name='muted')
         reason = " ".join(array[2:len(array)])
         await member.add_roles(role)
@@ -116,6 +122,9 @@ async def mute(ctx,*args):
 async def unmute(ctx,*args):
     if "Admin" in str(ctx.author.roles):
         array = ctx.content.split()
+        victim = array[1]
+        if '<@!' in victim:
+            victim = re.search('\d+',victim).group()
         user = await ctx.guild.fetch_member(int(array[1]))
         role = discord.utils.get(ctx.guild.roles, name='muted')
         await user.remove_roles(role)
