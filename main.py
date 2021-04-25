@@ -24,7 +24,7 @@ async def on_raw_message_delete(message):
 
 @bot.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
+    print(f'{bot.user.name} has connected to Discord!')
 
 @bot.event
 async def on_member_join(member):
