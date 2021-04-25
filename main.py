@@ -42,9 +42,9 @@ JsonFile.close()
 @bot.event
 async def on_message(message):
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
-    if message.author == client.user:
+    if message.author == bot.user:
         return
-    await filtermessage(message,client)
+    await filtermessage(message,bot)
     """
     if message.content.split()[0] in all_commands:
         if "Admin" not in str(message.author.roles):
