@@ -269,4 +269,15 @@ async def meme(ctx,*args):
             continue
 
 def setup(bot):
-    bot.add_command(i)
+    bot.add_command(help)
+    bot.add_command(rules)
+    bot.add_command(sayhello)
+    bot.add_command(sendch)
+    bot.add_command(add_role)
+    bot.add_command(remove_role)
+    bot.add_command(kick)
+    bot.add_command(mute)
+    bot.add_command(unmute)
+    bot.add_command(silence)
+    bot.add_command(unsilence)
+    bot.add_command(warn)
