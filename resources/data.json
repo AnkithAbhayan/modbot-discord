@@ -22,7 +22,7 @@
         "$unmute":"usage: `$unmute <user_id>`\n*unmutes a person (they are now allowed to send messages)*",
         "$silence":"usage: `$silence`\n*silences/mutes current channel*",
         "$unsilence":"usage: `$unsilence`\n*unsilences/unmutes current channel*",
-	    "$warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*"
+	"$warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*"
     },
     "all_commands":["$sayhello","$sendch","$kick","$remove_role","$add_role","$mute","$unmute","$help","$rules","$silence","$unsilence","$warn","$meme"],
     "all_commands_false":["sayhello","sendch","kick","remove_role","add_role","mute","unmute","help","rules","silence","unsilence","warn","meme"],
