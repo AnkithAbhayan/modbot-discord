@@ -269,7 +269,7 @@ async def meme(ctx,*args):
             continue
 
 def setup(bot):
-    bot.add_command(help)
+    bot.add_command('help')
     bot.add_command(rules)
     bot.add_command(sayhello)
     bot.add_command(sendch)
