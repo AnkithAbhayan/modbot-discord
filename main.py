@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import sys
 from discord.ext import commands
 from resources.ankith import date_time
-from resources.allcommands import Moderation_toolkit
+from resources.allcommands import Moderation_toolkit,filters
 from keep_alive import keep_alive
 
 load_dotenv()
@@ -40,7 +40,7 @@ async def on_message(message):
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
     if message.author == bot.user:
         return
-    await filtermessage(message,bot)
+    await filters.filtermessage(message,bot)
     await bot.process_commands(message)
     """
     if message.content.split()[0] in all_commands:
