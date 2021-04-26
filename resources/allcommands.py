@@ -105,7 +105,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
             #sending ctx to dm
             await member.create_dm()
-            embed=discord.Embedi(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
+            embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
             await member.dm_channel.send(embed=embed)
             #sending ctx to #notices
             channel = bot.get_channel(notice_channel_id)
