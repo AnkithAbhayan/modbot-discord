@@ -100,14 +100,14 @@ class Moderation_toolkit(commands.Cog):
             role = discord.utils.get(ctx.guild.roles, name='muted')
             reason = " ".join(array[2:len(array)])
             await member.add_roles(role)
-            #sending ctx to initial channel
+            #sending message to initial channel
             embed=discord.Embed(title="Muted",description=str(member.mention)+" has been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
             await ctx.channel.send(embed=embed)
-            #sending ctx to dm
+            #sending message to dm
             await member.create_dm()
             embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
             await member.dm_channel.send(embed=embed)
-            #sending ctx to #notices
+            #sending message to #notices
             channel = self.bot.get_channel(notice_channel_id)
             embed=discord.Embed(title="Notice: **Mute**",description="**"+str(member.name)+"** has been muted by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff)
             await channel.send(embed=embed)
@@ -128,7 +128,7 @@ class Moderation_toolkit(commands.Cog):
             embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=0x0066ff)
             await ctx.channel.send(embed=embed)
             await user.create_dm()
-            embed=discord.Embed(title="Unmuted",description=str(user.name)+", you are now allowed to send ctxs in "+str(ctx.guild),color=0x0066ff)
+            embed=discord.Embed(title="Unmuted",description=str(user.name)+", you are now allowed to send messages in "+str(ctx.guild),color=0x0066ff)
             await user.dm_channel.send(embed=embed)
         else:
             embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=0x0066ff)
@@ -188,8 +188,8 @@ class Moderation_toolkit(commands.Cog):
     @commands.command(name='silence')
     async def silence(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
-            role = discord.utils.get(ctx.guild.roles, name="developer")
-            await ctx.channel.set_permissions(role, send_ctxs=False)
+            role = discord.utils.get(ctx.guild.roles, name="everyone")
+            await ctx.channel.set_permissions(role, send_messages=False)
             embed=discord.Embed(title="Silenced",description="`"+str(ctx.channel)+"` has been silenced by "+str(ctx.author),color=0x0066ff)
             await ctx.channel.send(embed=embed)
         else:
@@ -199,8 +199,8 @@ class Moderation_toolkit(commands.Cog):
     @commands.command(name='unsilence')
     async def unsilence(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
-            role = discord.utils.get(ctx.guild.roles, name="developer")
-            await ctx.channel.set_permissions(role, send_ctxs=True)
+            role = discord.utils.get(ctx.guild.roles, name="everyone")
+            await ctx.channel.set_permissions(role, send_messages=True)
             embed=discord.Embed(title="Unsilenced",description="`"+str(ctx.channel)+"` has been unsilenced by "+str(ctx.author),color=0x0066ff)
             await ctx.channel.send(embed=embed)
         else:
