@@ -122,7 +122,7 @@ class Moderation_toolkit(commands.Cog):
             victim = array[1]
             if '<@!' in victim:
                 victim = re.search('\d+',victim).group()
-            user = await ctx.guild.fetch_member(int(array[1]))
+            user = await ctx.guild.fetch_member(victim)
             role = discord.utils.get(ctx.guild.roles, name='muted')
             await user.remove_roles(role)
             embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=0x0066ff)
