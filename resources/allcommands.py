@@ -45,7 +45,7 @@ class Moderation_toolkit(commands.Cog):
             embed=discord.Embed(title="Kicked.",description=str(name)+" has been kicked from the server",color=0x0066ff)
             await ctx.channel.send(embed=embed)
             #sending to #notices
-            channel = bot.get_channel(notice_channel_id) 
+            channel = self.bot.get_channel(notice_channel_id) 
             embed=discord.Embed(title="Notice: **Kick**",description=str(user.name)+" has been kicked by "+str(ctx.author)+"\nchannel: "+str(ctx.channel)+"\nreason: "+" ".join(array[2:len(array)])+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff)
             await channel.send(embed=embed)
             await user.create_dm()
@@ -108,7 +108,7 @@ class Moderation_toolkit(commands.Cog):
             embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
             await member.dm_channel.send(embed=embed)
             #sending ctx to #notices
-            channel = bot.get_channel(notice_channel_id)
+            channel = self.bot.get_channel(notice_channel_id)
             embed=discord.Embed(title="Notice: **Mute**",description="**"+str(member.name)+"** has been muted by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff)
             await channel.send(embed=embed)
         else:
@@ -225,7 +225,7 @@ class Moderation_toolkit(commands.Cog):
             embed=discord.Embed(title="Infraction: **Warning**",description="you have been warned by "+str(ctx.author)+"\n**reason**: "+reason,color=0x0066ff)
             await user.dm_channel.send(embed=embed)
             #sending to #notices
-            channel = bot.get_channel(notice_channel_id)
+            channel = self.bot.get_channel(notice_channel_id)
             embed=discord.Embed(title="Notice: **Warning**",description="**"+str(user.name)+"** has been warned by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff)
             await channel.send(embed=embed)
         else:
