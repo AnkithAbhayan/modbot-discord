@@ -21,18 +21,18 @@ class Moderation_toolkit(commands.Cog):
         self.bot = bot
 
     @commands.command(name='sayhello')
-    async def sayhello(ctx,*args):
+    async def sayhello(self,ctx,*args):
         await ctx.channel.send(f"Hello there!, {ctx.author.mention}")
 
     @commands.command(name='sendch')
-    async def sendch(ctx,*args):
+    async def sendch(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             array = ctx.content.split()
             channel = ctx.get_channel(int(array[1]))
             await channel.send(' '.join(array[2:len(array)]))
 
     @commands.command(name='kick')
-    async def kick(ctx,*args):
+    async def kick(self,ctx,*args):
         array = ctx.content.split()
         if "Admin" in str(ctx.author.roles):
             victim = array[1]
@@ -56,7 +56,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='remove_role')
-    async def remove_role(ctx,*args):
+    async def remove_role(self,ctx,*args):
         array = ctx.content.split()
         if "Owner" in str(ctx.author.roles):
             user = await ctx.guild.fetch_member(int(array[2]))
@@ -73,7 +73,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='add_role')
-    async def add_role(ctx,*args):
+    async def add_role(self,ctx,*args):
         array = ctx.content.split()
         if "Owner" in str(ctx.author.roles):
             user = await ctx.guild.fetch_member(int(array[2]))
@@ -90,7 +90,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='mute')
-    async def mute(ctx,*args):
+    async def mute(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             array = ctx.content.split()
             victim = array[1]
@@ -116,7 +116,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='unmute')
-    async def unmute(ctx,*args):
+    async def unmute(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             array = ctx.content.split()
             victim = array[1]
@@ -135,7 +135,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='help')
-    async def showhelp(ctx,*args):
+    async def showhelp(self,ctx,*args):
         with open("resources/data.json","r") as JsonFile:
             data = json.load(JsonFile)
         all_commands = data["all_commands"]
@@ -163,7 +163,7 @@ class Moderation_toolkit(commands.Cog):
                 await ctx.channel.send(embed=embed)
 
     @commands.command(name='rules')
-    async def rules(ctx,*args):
+    async def rules(self,ctx,*args):
         with open("resources/data.json","r") as JsonFile:
             data = json.load(JsonFile)
         string = data["rules"]
@@ -186,7 +186,7 @@ class Moderation_toolkit(commands.Cog):
                 await ctx.channel.send(embed=embed)
 
     @commands.command(name='silence')
-    async def silence(ctx,*args):
+    async def silence(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             role = discord.utils.get(ctx.guild.roles, name="developer")
             await ctx.channel.set_permissions(role, send_ctxs=False)
@@ -197,7 +197,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='unsilence')
-    async def unsilence(ctx,*args):
+    async def unsilence(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             role = discord.utils.get(ctx.guild.roles, name="developer")
             await ctx.channel.set_permissions(role, send_ctxs=True)
@@ -208,7 +208,7 @@ class Moderation_toolkit(commands.Cog):
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='warn')
-    async def warn(ctx,*args):
+    async def warn(self,ctx,*args):
         if "Admin" in str(ctx.author.roles):
             array = ctx.content.split()
             victim = array[1]
