@@ -8,7 +8,7 @@ class filters:
     async def filtermessage(ctx,bot):
         if "@everyone" in ctx.content:
             #ctx.channel.send("are you trying to do something dude?")
-            await pingedunnecessary(ctx,bot)
+            await filters.pingedunnecessary(ctx,bot)
         for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
             if item in ctx.content:
                 if "Admin" in str(ctx.author.roles):
