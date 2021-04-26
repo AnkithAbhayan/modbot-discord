@@ -261,12 +261,12 @@ class filters:
             #ctx.channel.send("are you trying to do something dude?")
             await pingedunnecessary(ctx,bot)
         for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
-            if item in ctx.message.content:
+            if item in ctx.content:
                 if "Admin" in str(ctx.author.roles):
                     pass
                 else:
                     channel = bot.get_channel(notice_channel_id)
-                    embed=discord.Embed(title="Notice: **language breach**",description="**"+str(ctx.author)+"** sent a bad word in this server\n **textchannel**: "+str(ctx.channel)+"\n **full message**: "+str(ctx.message.content)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff) 
+                    embed=discord.Embed(title="Notice: **language breach**",description="**"+str(ctx.author)+"** sent a bad word in this server\n **textchannel**: "+str(ctx.channel)+"\n **full message**: "+str(ctx.content)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff) 
                     await channel.send(embed=embed)
     async def pingedunnecessary(client,message):
         if not message.author.has_role("Owner"):
