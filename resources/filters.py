@@ -17,10 +17,10 @@ class filters:
                     channel = bot.get_channel(notice_channel_id)
                     embed=discord.Embed(title="Notice: **language breach**",description="**"+str(ctx.author)+"** sent a bad word in this server\n **textchannel**: "+str(ctx.channel)+"\n **full message**: "+str(ctx.content)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff) 
                     await channel.send(embed=embed)
-    async def pingedunnecessary(client,message):
+    async def pingedunnecessary(message,bot):
         if not message.author.has_role("Owner"):
             embed=discord.Embed(title="Dont do it",description=str(message.author.mention)+" please dont try to ping everyone",color=0x0066ff)
             await message.channel.send(embed=embed)
-            channel = client.get_channel(notice_channel_id)
+            channel = bot.get_channel(notice_channel_id)
             embed=discord.Embed(title="Notice: **Pinged Everyone**",description="**"+str(message.author.mention)+"** has tried to ping everyone \n **channel**: "+str(message.channel)+"\n **full message**: "+str(message.content)+"\n **time**: "+str(date_time.date())+" "+str(date_time.time()),color=0x0066ff) 
             await channel.send(embed=embed)
