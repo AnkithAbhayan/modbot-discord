@@ -257,7 +257,7 @@ class Moderation_toolkit(commands.Cog):
 
 class filters:
     async def filtermessage(ctx,bot):
-        if "@everyone" in ctx.message.content:
+        if "@everyone" in ctx.content:
             #ctx.channel.send("are you trying to do something dude?")
             await pingedunnecessary(ctx,bot)
         for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
