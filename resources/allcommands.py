@@ -267,7 +267,7 @@ class self_assign_roles(commands.Cog):
             await ctx.channel.send(embed=help_get_role)
             return
         developer_role = discord.utils.get(ctx.guild.roles, name="developer")
-        if developer_role not in user.roles:
+        if developer_role not in ctx.author.roles:
             get_dev_role_embed = discord.Embed(title="No @developer role.",description="Hi! If you require specific language roles, you have to get the @developer role first. This role gives you access to channels related to programming.",color=0x0066ff)
             get_dev_role_embed.add_field(name="How to get the @developer role?", value="Enter the following command. \n ```\n$get_role developer```",inline=False)
             get_dev_role_embed.set_footer(text="Happy coding.")
