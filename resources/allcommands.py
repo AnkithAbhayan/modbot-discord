@@ -262,9 +262,8 @@ class self_assign_roles(commands.Cog):
     @commands.command(name="get_role")
     async def get_role(self,ctx,*args):
         array = ctx.message.content.split()
-        all_roles_string = ' '.join(data['user_roles'])
         if len(array) == 1:
-            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\nUsage:\n```\n$get_role <role_name>```\n\n Example: `$get_role developer` gives you access to all programming related channels!\n All self-assignable roles: `{','.join(all_roles_string)}`",color=0x0066ff)
+            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\nUsage:\n```\n$get_role <role_name>```\n\n Example: `$get_role developer` gives you access to all programming related channels!\n All self-assignable roles: `{','.join(data['user_roles'])}`",color=0x0066ff)
             await ctx.channel.send(embed=help_get_role)
             return
         developer_role = discord.utils.get(ctx.guild.roles, name="developer")
@@ -279,5 +278,5 @@ class self_assign_roles(commands.Cog):
             await ctx.author.add_roles(role)
             got_the_role_embed = discord.Embed(title=f"@{array[1]} role added!",description=f"You have now got the @{array[1]} role! :tada:",color=0x0066ff)
         else:
-            error_in_role_name = discord.Embed(title="Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: {all_roles_string}",color=0x0066ff)
+            error_in_role_name = discord.Embed(title="Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: `{','.join(data['user_roles'])}`",color=0x0066ff)
             await ctx.channel.send(embed=error_in_role_name)
