@@ -29,6 +29,6 @@
     "notice_channel":807532505137545217,
     "rulesfull":"**#1.** Be nice to one another, respect each other's opinions|**#2.** Don't send hateful messages|**#3.** No nsfw or inappropriate messages should be sent|**#4.** If anyone encounters any issue, Ping the @Admin they will address the issue|**#5.** No spamming please or pinging of @everyone|**#6.** No racist or homophobic messages, photos ,videos etc|**#7.** This is an English speaking server so speak in English to the best of your ability|**#8.** Bot commands must be used only in #bots|**#9.** People who do not abide with these rules will be banned or muted from the server",
     "user_roles":["developer", "C/C++", "python", "java", "html/css", "UI/UX"],
-    "error_colour":0xFF0000,
-    "standard_colour":0x0066ff
+    "error_colour":"0xFF0000",
+    "standard_colour":"0x0066ff"
 }
