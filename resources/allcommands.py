@@ -264,7 +264,7 @@ class self_assign_roles(commands.Cog):
         array = ctx.message.content.split()
         all_roles_string = ' '.join(data['user_roles'])
         if len(array) == 1:
-            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\nUsage:\n```\n$get_role <role_name>```\n\n Example: `$get_role developer` gives you access to all programming related channels!\n All self-assignable roles: {all_roles_string}")
+            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\nUsage:\n```\n$get_role <role_name>```\n\n Example: `$get_role developer` gives you access to all programming related channels!\n All self-assignable roles: `{','.join(all_roles_string)}`",color=0x0066ff)
             await ctx.channel.send(embed=help_get_role)
             return
         developer_role = discord.utils.get(ctx.guild.roles, name="developer")
