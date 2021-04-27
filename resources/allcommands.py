@@ -278,12 +278,12 @@ class self_assign_roles(commands.Cog):
         if array[1] in data["user_roles"]:
             role = discord.utils.get(ctx.guild.roles, name=array[1])
             if role in ctx.author.roles:
-                already_have_the_role = discord.Embed(title="You Already have the role.",description=f"It looks like you already have the {role.mention} role.",color=error_colour)
+                already_have_the_role = discord.Embed(title=":x: You Already have the role.",description=f"It looks like you already have the {role.mention} role.",color=error_colour)
                 await ctx.channel.send(embed=already_have_the_role)
                 return
             await ctx.author.add_roles(role)
-            got_the_role_embed = discord.Embed(title=f"{role.mention} role added!",description=f"You have now got the {role.mention} role! :tada:",color=standard_colour)
+            got_the_role_embed = discord.Embed(title=f"{role.mention} role added!",description=f":white_check_mark: You have now got the {role.mention} role! :tada:",color=standard_colour)
             await ctx.channel.send(embed=got_the_role_embed)
         else:
-            error_in_role_name = discord.Embed(title="Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: `{', '.join(data['user_roles'])}`",color=error_colour)
+            error_in_role_name = discord.Embed(title=":x: Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: `{', '.join(data['user_roles'])}`",color=error_colour)
             await ctx.channel.send(embed=error_in_role_name)
