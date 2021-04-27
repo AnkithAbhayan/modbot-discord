@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import sys
 from discord.ext import commands
 from resources.ankith import date_time
-from resources.allcommands import Moderation_toolkit
+from resources.allcommands import Moderation_toolkit,self_assign_roles
 from resources.filters import filters
 from keep_alive import keep_alive
 
@@ -17,6 +17,7 @@ guild_id = 796012940477595689
 bot = commands.Bot(command_prefix="$")
 bot.remove_command('help')
 bot.add_cog(Moderation_toolkit(bot))
+bot.add_cog(self_assign_roles(bot))
 
 @bot.event
 async def on_raw_message_delete(message):
