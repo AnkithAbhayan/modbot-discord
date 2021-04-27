@@ -276,7 +276,8 @@ class self_assign_roles(commands.Cog):
         if array[1] in data["user_roles"]:
             role = discord.utils.get(ctx.guild.roles, name=array[1])
             ctx.author.add_roles(role)
-            got_the_role_embed = discord.Embed(title=f"@{array[1]} role added!",description=f"You have now got the {array[1]} role! :tada:",color=0x0066ff)
+            got_the_role_embed = discord.Embed(title=f"@{array[1]} role added!",description=f"You have now got the @{array[1]} role! :tada:",color=0x0066ff)
         else:
-            error_in_role_name = discord.Embed(title="Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>```\nHere are all the valid role names: {' '.join(data['user_roles'])}",color=0x0066ff)
+            all_roles_string = ' '.join(data['user_roles'])
+            error_in_role_name = discord.Embed(title="Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: {all_roles_string}",color=0x0066ff)
             ctx.channel.send(embed=error_in_role_name)
