@@ -264,6 +264,7 @@ class self_assign_roles(commands.Cog):
     @commands.command(name="get_role")
     async def get_role(self,ctx,*args):
         array = ctx.message.content.split()
+        await ctx.send(ctx.author.mention)
         if len(array) == 1:
             help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
             await ctx.channel.send(embed=help_get_role)
@@ -273,7 +274,7 @@ class self_assign_roles(commands.Cog):
         if developer_role not in ctx.author.roles:
             if array[1] == "developer":
                 await ctx.author.add_roles(developer_role)
-                got_the_role_embed = discord.Embed(title=f":white_check_mark: role added!",description=f"You have now got the {developer_role.mention} role! :tada:\nEnjoy access to all the programming related channel!",color=standard_colour)
+                got_the_role_embed = discord.Embed(title=f":white_check_mark: role added!",description=f"You have now got the {developer_role.mention} role! :tada:\nEnjoy access to all the programming related channels!",color=standard_colour)
                 got_the_role_embed.set_footer(text="Happy coding.")
                 await ctx.channel.send(embed=got_the_role_embed)
             else:
