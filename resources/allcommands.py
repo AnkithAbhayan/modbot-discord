@@ -265,7 +265,7 @@ class self_assign_roles(commands.Cog):
     async def get_role(self,ctx,*args):
         array = ctx.message.content.split()
         if len(array) == 1:
-            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
+            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n**Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
             await ctx.channel.send(embed=help_get_role)
             await ctx.send(ctx.author.mention)
             return
