@@ -265,7 +265,7 @@ class self_assign_roles(commands.Cog):
     async def get_role(self,ctx,*args):
         array = ctx.message.content.split()
         if len(array) == 1:
-            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n All self-assignable roles: `{', '.join(data['user_roles'])}`",color=standard_colour)
+            help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
             await ctx.channel.send(embed=help_get_role)
             return
         developer_role = discord.utils.get(ctx.guild.roles, name="developer")
@@ -273,7 +273,7 @@ class self_assign_roles(commands.Cog):
             get_dev_role_embed = discord.Embed(title=f"No @developer role.",description=f"Hi! If you require specific language roles, you have to get the {developer_role.mention} role first.\nThis role gives you access to channels related to programming.",color=error_colour)
             get_dev_role_embed.add_field(name="How to get the {developer_role.mention} role?", value="Enter the following command. \n ```\n$get_role developer```",inline=False)
             get_dev_role_embed.set_footer(text="Happy coding.")
-            await ctx.channel.send(embed=embed)
+            await ctx.channel.send(embed=get_dev_role_embed)
             return
         if array[1] in data["user_roles"]:
             role = discord.utils.get(ctx.guild.roles, name=array[1])
@@ -286,5 +286,5 @@ class self_assign_roles(commands.Cog):
             got_the_role_embed.set_footer(text="Happy coding.")
             await ctx.channel.send(embed=got_the_role_embed)
         else:
-            error_in_role_name = discord.Embed(title=":x: Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\nHere are all the valid role names: `{', '.join(data['user_roles'])}`",color=error_colour)
+            error_in_role_name = discord.Embed(title=":x: Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\n**All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=error_colour)
             await ctx.channel.send(embed=error_in_role_name)
