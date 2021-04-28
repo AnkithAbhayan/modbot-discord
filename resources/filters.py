@@ -12,11 +12,11 @@ class filters:
             await filters.pingedunnecessary(ctx,bot)
         for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
             if item in ctx.content.lower():
-                if "Admin" in str(ctx.author.roles):
-                    pass
-                else:
+                admin_role = discord.utils.get(ctx.guild.roles, name="Admin")
+                if admin_role not in ctx.author.roles:
                     channel = bot.get_channel(notice_channel_id)
-                    embed=discord.Embed(title="Notice: **language breach**",description="**"+str(ctx.author)+"** sent a bad word in this server\n **textchannel**: "+str(ctx.channel)+"\n **full message**: "+str(ctx.content)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=0x0066ff) 
+                    link = f"https://discordapp.com/{bot.guild.id}/{ctx.channel.id}/{ctx.message.id}" 
+                    embed=discord.Embed(title="Notice: **language breach**",description=f"**{ctx.author.name}+** sent a bad word in this server\n **textchannel**: {ctx.channel.mention}\n **full message**:\n{ctx.content}\n[goto message]({link})\n**date and time**: {str(date_time.time())} {str(date_time.date())}",color=0x0066ff) 
                     await channel.send(embed=embed)
     async def pingedunnecessary(ctx,bot):
         owner_role = discord.utils.get(ctx.guild.roles, name='Owner')

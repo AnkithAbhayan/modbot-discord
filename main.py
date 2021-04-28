@@ -29,15 +29,6 @@ async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
 @bot.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
-    role = discord.utils.get(message.guild.roles, name="developer")
-    await member.add_roles(role)
-
-@bot.event
 async def on_message(message):
     print(str(message.author)+" on "+str(message.channel)+": "+str(message.content))
     if message.author == bot.user:
