@@ -16,7 +16,7 @@ class filters:
                 if admin_role not in ctx.author.roles:
                     channel = bot.get_channel(notice_channel_id)
                     link = f"https://discordapp.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.id}" 
-                    embed=discord.Embed(title="Notice: **language breach**",description=f"**{ctx.author.name}+** sent a bad word in this server\n **textchannel**: {ctx.channel.mention}\n **full message**:```\n{ctx.content}\n```\n[goto message]({link})\n**date and time**: {str(date_time.time())} {str(date_time.date())}",color=0x0066ff) 
+                    embed=discord.Embed(title="Notice: **language breach**",description=f"**User**: {ctx.author.mention}\n **textchannel**: {ctx.channel.mention}\n **full message**:```\n{ctx.content}\n```\n[goto message]({link})\n**date and time**: {str(date_time.time())} {str(date_time.date())}",color=0x0066ff) 
                     await channel.send(embed=embed)
     async def pingedunnecessary(ctx,bot):
         owner_role = discord.utils.get(ctx.guild.roles, name='Owner')
