@@ -21,8 +21,9 @@ class filters:
     async def pingedunnecessary(ctx,bot):
         owner_role = discord.utils.get(ctx.guild.roles, name='Owner')
         if owner_role not in ctx.author.roles:
+            link = f"https://discordapp.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.id}" 
             embed=discord.Embed(title="Dont do it",description=str(ctx.author.mention)+" please dont try to ping everyone",color=0x0066ff)
             await ctx.channel.send(embed=embed)
             channel = bot.get_channel(notice_channel_id)
-            embed=discord.Embed(title="Notice: **Pinged Everyone**",description="**"+str(ctx.author.mention)+"** has tried to ping everyone \n **channel**: "+str(ctx.channel)+"\n **full message**: "+str(ctx.content)+"\n **time**: "+str(date_time.date())+" "+str(date_time.time()),color=0x0066ff) 
+            embed=discord.Embed(title="Notice: **Pinged Everyone**",description=f"**{ctx.author.mention}** has tried to ping everyone.\n**channel**: {ctx.channel.mention}\n**full message**:\n```{ctx.content}\n```\n[goto message]({link})\n**date and time**: {str(date_time.date())} {str(date_time.time())}" ,color=0x0066ff) 
             await channel.send(embed=embed)
