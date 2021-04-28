@@ -272,7 +272,7 @@ class self_assign_roles(commands.Cog):
         developer_role = discord.utils.get(ctx.guild.roles, name="developer")        
         if developer_role not in ctx.author.roles:
             if array[1] == "developer":
-                ctx.author.add_roles(developer_role)
+                await ctx.author.add_roles(developer_role)
                 got_the_role_embed = discord.Embed(title=f":white_check_mark: role added!",description=f"You have now got the {developer_role.mention} role! :tada:\nEnjoy access to all the programming related channel!",color=standard_colour)
                 got_the_role_embed.set_footer(text="Happy coding.")
                 await ctx.channel.send(embed=got_the_role_embed)
