@@ -268,12 +268,19 @@ class self_assign_roles(commands.Cog):
             help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
             await ctx.channel.send(embed=help_get_role)
             return
-        developer_role = discord.utils.get(ctx.guild.roles, name="developer")
+
+        developer_role = discord.utils.get(ctx.guild.roles, name="developer")        
         if developer_role not in ctx.author.roles:
-            get_dev_role_embed = discord.Embed(title=f":x: No @developer role.",description=f"Hi! If you require specific language roles, you have to get the {developer_role.mention} role first.\nThis role gives you access to channels related to programming.",color=error_colour)
-            get_dev_role_embed.add_field(name="How to get the @developer role?", value="Enter the following command. \n ```\n$get_role developer```",inline=False)
-            get_dev_role_embed.set_footer(text="Happy coding.")
-            await ctx.channel.send(embed=get_dev_role_embed)
+            if array[1] == "developer":
+                ctx.author.add_roles(developer_role)
+                got_the_role_embed = discord.Embed(title=f":white_check_mark: role added!",description=f"You have now got the {developer_role.mention} role! :tada:\nEnjoy access to all the programming related channel!",color=standard_colour)
+                got_the_role_embed.set_footer(text="Happy coding.")
+                await ctx.channel.send(embed=got_the_role_embed)
+            else:
+                get_dev_role_embed = discord.Embed(title=f":x: No @developer role.",description=f"Hi! If you require specific language roles, you have to get the {developer_role.mention} role first.\nThis role gives you access to channels related to programming.",color=error_colour)
+                get_dev_role_embed.add_field(name="How to get the @developer role?", value="Enter the following command. \n ```\n$get_role developer```",inline=False)
+                get_dev_role_embed.set_footer(text="Happy coding.")
+                await ctx.channel.send(embed=get_dev_role_embed)
             return
         if array[1] in data["user_roles"]:
             role = discord.utils.get(ctx.guild.roles, name=array[1])
