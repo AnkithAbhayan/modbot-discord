@@ -264,7 +264,6 @@ class self_assign_roles(commands.Cog):
     @commands.command(name="get_role")
     async def get_role(self,ctx,*args):
         array = ctx.message.content.split()
-        await ctx.send(ctx.author.mention)
         if len(array) == 1:
             help_get_role = discord.Embed(title="Command help: `$get_role`",description=f"This command lets you self assign roles to your user so that you can access the full benefits!\n**Usage**:\n```\n$get_role <role_name>```\n\n **Example**: `$get_role developer` gives you access to all programming related channels!\n **All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=standard_colour)
             await ctx.channel.send(embed=help_get_role)
@@ -296,3 +295,4 @@ class self_assign_roles(commands.Cog):
         else:
             error_in_role_name = discord.Embed(title=":x: Invalid role.",description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\n**All self-assignable roles**: `{', '.join(data['user_roles'])}`",color=error_colour)
             await ctx.channel.send(embed=error_in_role_name)
+        await ctx.send(ctx.author.mention)
