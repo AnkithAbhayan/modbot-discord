@@ -11,7 +11,7 @@ class filters:
             #ctx.channel.send("are you trying to do something dude?")
             await filters.pingedunnecessary(ctx,bot)
         for item in ["fuck","bitch","cumshot","asshole","wtf","retard","cocksucker","nigger","sex"]:
-            if item in ctx.content:
+            if item in ctx.content.lower():
                 if "Admin" in str(ctx.author.roles):
                     pass
                 else:
