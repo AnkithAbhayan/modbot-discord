@@ -44,17 +44,17 @@ class Moderation_toolkit(commands.Cog):
             name = user.name
             await user.kick()
             #sending to initial channel
-            embed=discord.Embed(title="Kicked.",description=str(name)+" has been kicked from the server",color=data["standard_colour"])
+            embed=discord.Embed(title="Kicked.",description=str(name)+" has been kicked from the server",color=standard_colour)
             await ctx.channel.send(embed=embed)
             #sending to #notices
             channel = self.bot.get_channel(notice_channel_id) 
-            embed=discord.Embed(title="Notice: **Kick**",description=str(user.name)+" has been kicked by "+str(ctx.author)+"\nchannel: "+str(ctx.channel)+"\nreason: "+" ".join(array[2:len(array)])+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=data["standard_colour"])
+            embed=discord.Embed(title="Notice: **Kick**",description=str(user.name)+" has been kicked by "+str(ctx.author)+"\nchannel: "+str(ctx.channel)+"\nreason: "+" ".join(array[2:len(array)])+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=standard_colour)
             await channel.send(embed=embed)
             await user.create_dm()
-            embed=discord.Embed(title="Infraction: Kick",description="you just got kicked from "+str(ctx.guild)+" by "+str(ctx.author)+"\n reason was: "+" ".join(array[2:len(array)]),color=data["standard_colour"])
+            embed=discord.Embed(title="Infraction: Kick",description="you just got kicked from "+str(ctx.guild)+" by "+str(ctx.author)+"\n reason was: "+" ".join(array[2:len(array)]),color=standard_colour)
             await user.dm_channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='remove_role')
@@ -64,14 +64,14 @@ class Moderation_toolkit(commands.Cog):
             user = await ctx.guild.fetch_member(int(array[2]))
             role = discord.utils.get(ctx.guild.roles, name=array[1])
             if array[1] not in str(user.roles):
-                embed=discord.Embed(title="Doesnt have the role",description=str(user.name)+" doesnt even have the `"+str(role.name)+"` role in the first place",color=data["standard_colour"])
+                embed=discord.Embed(title="Doesnt have the role",description=str(user.name)+" doesnt even have the `"+str(role.name)+"` role in the first place",color=standard_colour)
                 await ctx.channel.send(embed=embed)
             else:
                 await user.remove_roles(role)
-                embed=discord.Embed(title="Role has been removed",description="`"+str(role.name)+"` role has been removed from "+str(user.mention),color=data["standard_colour"])
+                embed=discord.Embed(title="Role has been removed",description="`"+str(role.name)+"` role has been removed from "+str(user.mention),color=standard_colour)
                 await ctx.channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='add_role')
@@ -81,14 +81,14 @@ class Moderation_toolkit(commands.Cog):
             user = await ctx.guild.fetch_member(int(array[2]))
             role = discord.utils.get(ctx.guild.roles, name=array[1])
             if array[1] in str(user.roles):
-                embed=discord.Embed(title="Already has the role",description=str(user.name)+" already has the `"+str(role.name)+"` role",color=data["standard_colour"])
+                embed=discord.Embed(title="Already has the role",description=str(user.name)+" already has the `"+str(role.name)+"` role",color=standard_colour)
                 await ctx.channel.send(embed=embed)
             else:
                 await user.add_roles(role)
-                embed=discord.Embed(title="Role has been added",description=str(user.mention)+" has been given the `"+str(role.name)+"` role",color=data["standard_colour"])
+                embed=discord.Embed(title="Role has been added",description=str(user.mention)+" has been given the `"+str(role.name)+"` role",color=standard_colour)
                 await ctx.channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='mute')
@@ -103,18 +103,18 @@ class Moderation_toolkit(commands.Cog):
             reason = " ".join(array[2:len(array)])
             await member.add_roles(role)
             #sending message to initial channel
-            embed=discord.Embed(title="Muted",description=str(member.mention)+" has been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=data["standard_colour"])
+            embed=discord.Embed(title="Muted",description=str(member.mention)+" has been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=standard_colour)
             await ctx.channel.send(embed=embed)
             #sending message to dm
             await member.create_dm()
-            embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=data["standard_colour"])
+            embed=discord.Embed(title="Infraction: Mute",description="you have been muted by "+str(ctx.author)+"\n**reason**: "+reason,color=standard_colour)
             await member.dm_channel.send(embed=embed)
             #sending message to #notices
             channel = self.bot.get_channel(notice_channel_id)
-            embed=discord.Embed(title="Notice: **Mute**",description="**"+str(member.name)+"** has been muted by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=data["standard_colour"])
+            embed=discord.Embed(title="Notice: **Mute**",description="**"+str(member.name)+"** has been muted by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=standard_colour)
             await channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='unmute')
@@ -127,13 +127,13 @@ class Moderation_toolkit(commands.Cog):
             user = await ctx.guild.fetch_member(victim)
             role = discord.utils.get(ctx.guild.roles, name='muted')
             await user.remove_roles(role)
-            embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=data["standard_colour"])
+            embed=discord.Embed(title="Unmuted",description=str(user.name)+" has been unmuted.",color=standard_colour)
             await ctx.channel.send(embed=embed)
             await user.create_dm()
-            embed=discord.Embed(title="Unmuted",description=str(user.name)+", you are now allowed to send messages in "+str(ctx.guild),color=data["standard_colour"])
+            embed=discord.Embed(title="Unmuted",description=str(user.name)+", you are now allowed to send messages in "+str(ctx.guild),color=standard_colour)
             await user.dm_channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='help')
@@ -145,7 +145,7 @@ class Moderation_toolkit(commands.Cog):
         helpinfo = data["helpinfo"]
         JsonFile.close()
         if len(ctx.message.content.split()) == 1:
-            embed=discord.Embed(title="$modbot", description="$modbot is a bot for moderators made by the developer team at "+str(ctx.guild)+" here are all commands:", color=data["standard_colour"])
+            embed=discord.Embed(title="$modbot", description="$modbot is a bot for moderators made by the developer team at "+str(ctx.guild)+" here are all commands:", color=standard_colour)
             for key,value in helpinfo.items():
                 embed.add_field(name=key, value=value,inline=False)
             embed.set_footer(text="developed by ankith101.rar")
@@ -153,15 +153,15 @@ class Moderation_toolkit(commands.Cog):
         else:
             command = ctx.message.content.split()[1]
             if command in all_commands:
-                embed=discord.Embed(title=command,description=helpinfo[command],color=data["standard_colour"])
+                embed=discord.Embed(title=command,description=helpinfo[command],color=standard_colour)
                 embed.set_footer(text="developed by ankith101.rar")
                 await ctx.channel.send(embed=embed)
             elif command in all_commands_false:
-                embed=discord.Embed(title="$"+command,description=helpinfo["$"+command],color=data["standard_colour"])
+                embed=discord.Embed(title="$"+command,description=helpinfo["$"+command],color=standard_colour)
                 embed.set_footer(text="developed by ankith101.rar")
                 await ctx.channel.send(embed=embed)
             else:
-                embed=discord.Embed(title="Unknown command: `"+str(command)+"`",description="idk what you typed, check the spelling",color=data["standard_colour"])
+                embed=discord.Embed(title="Unknown command: `"+str(command)+"`",description="idk what you typed, check the spelling",color=standard_colour)
                 await ctx.channel.send(embed=embed)
 
     @commands.command(name='rules')
@@ -175,16 +175,16 @@ class Moderation_toolkit(commands.Cog):
         JsonFile.close()
         array = ctx.message.content.split()
         if len(array) == 1:
-            embed=discord.Embed(title="Rules of the server:",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html",description="You can get a copy of the server rules from our website\n [click here](https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html) to view the rules",color=data["standard_colour"])
+            embed=discord.Embed(title="Rules of the server:",url="https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html",description="You can get a copy of the server rules from our website\n [click here](https://htmlpreview.github.io/?https://github.com/AnkithAbhayan/modbot-discord/blob/main/docs/rules.html) to view the rules",color=standard_colour)
             embed.set_footer(text="website by Aadi, bot developed by Ankith101")
             await ctx.channel.send(embed=embed)
         elif len(array) == 2:
             if array[1] == "full":
-                embed=discord.Embed(title="RULES of AVAMOAGHOS server:",description="\n".join(rulesfull),color=data["standard_colour"])
+                embed=discord.Embed(title="RULES of AVAMOAGHOS server:",description="\n".join(rulesfull),color=standard_colour)
                 embed.set_footer(text="developed by ankith101.rar")
                 await ctx.channel.send(embed=embed)
             elif int(array[1]) <= len(string) and int(array[1]) >= 1:
-                embed=discord.Embed(title="Rules",description="**#"+str(array[1])+".** "+string[int(array[1])-1],color=data["standard_colour"])
+                embed=discord.Embed(title="Rules",description="**#"+str(array[1])+".** "+string[int(array[1])-1],color=standard_colour)
                 await ctx.channel.send(embed=embed)
 
     @commands.command(name='silence')
@@ -192,10 +192,10 @@ class Moderation_toolkit(commands.Cog):
         if "Admin" in str(ctx.author.roles):
             role = discord.utils.get(ctx.guild.roles, name="everyone")
             await ctx.channel.set_permissions(role, send_messages=False)
-            embed=discord.Embed(title="Silenced",description="`"+str(ctx.channel)+"` has been silenced by "+str(ctx.author),color=data["standard_colour"])
+            embed=discord.Embed(title="Silenced",description="`"+str(ctx.channel)+"` has been silenced by "+str(ctx.author),color=standard_colour)
             await ctx.channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='unsilence')
@@ -203,10 +203,10 @@ class Moderation_toolkit(commands.Cog):
         if "Admin" in str(ctx.author.roles):
             role = discord.utils.get(ctx.guild.roles, name="everyone")
             await ctx.channel.set_permissions(role, send_messages=True)
-            embed=discord.Embed(title="Unsilenced",description="`"+str(ctx.channel)+"` has been unsilenced by "+str(ctx.author),color=data["standard_colour"])
+            embed=discord.Embed(title="Unsilenced",description="`"+str(ctx.channel)+"` has been unsilenced by "+str(ctx.author),color=standard_colour)
             await ctx.channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='warn')
@@ -219,19 +219,19 @@ class Moderation_toolkit(commands.Cog):
             reason = " ".join(array[2:len(array)])
             user = await ctx.guild.fetch_member(victim)
             #sending to initial channel
-            embed=discord.Embed(title="Warning",description="applied warning to "+str(user.name)+"\n**reason**: "+reason,color=data["standard_colour"])
+            embed=discord.Embed(title="Warning",description="applied warning to "+str(user.name)+"\n**reason**: "+reason,color=standard_colour)
             await ctx.channel.send(embed=embed)
             await ctx.channel.send(str(user.mention))
             #sending to dms
             await user.create_dm()
-            embed=discord.Embed(title="Infraction: **Warning**",description="you have been warned by "+str(ctx.author)+"\n**reason**: "+reason,color=data["standard_colour"])
+            embed=discord.Embed(title="Infraction: **Warning**",description="you have been warned by "+str(ctx.author)+"\n**reason**: "+reason,color=standard_colour)
             await user.dm_channel.send(embed=embed)
             #sending to #notices
             channel = self.bot.get_channel(notice_channel_id)
-            embed=discord.Embed(title="Notice: **Warning**",description="**"+str(user.name)+"** has been warned by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=data["standard_colour"])
+            embed=discord.Embed(title="Notice: **Warning**",description="**"+str(user.name)+"** has been warned by "+str(ctx.author)+"\n**reason**: "+reason+"\n**channel**: "+str(ctx.channel)+"\n**date and time**: "+str(date_time.time())+" "+str(date_time.date()),color=standard_colour)
             await channel.send(embed=embed)
         else:
-            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=data["standard_colour"])
+            embed=discord.Embed(title="Invalid Permissions",description=str(ctx.author.mention)+" you are not allowed to use that command",color=standard_colour)
             await ctx.channel.send(embed=embed)
 
     @commands.command(name='meme')
@@ -250,7 +250,7 @@ class Moderation_toolkit(commands.Cog):
                     await ctx.channel.send(str(ctx.author.mention)+" you can only use `$meme` command in #memes")
                     break
                 else:
-                    embed=discord.Embed(title=str(sr.title),description="posted by u/"+str(sr.author)+"\n"+str(sr.score)+" upvotes",color=data["standard_colour"])
+                    embed=discord.Embed(title=str(sr.title),description="posted by u/"+str(sr.author)+"\n"+str(sr.score)+" upvotes",color=standard_colour)
                     embed.set_image(url=str(sr.url))
                     await ctx.channel.send(embed=embed)
                     break
