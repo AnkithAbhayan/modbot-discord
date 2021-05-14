@@ -1,7 +1,7 @@
 import json
 import discord
 import discord.utils
-from resources.ankith import date_time
+from bot.utils.ankith import date_time
 
 with open("resources/data.json", "r") as JsonFile:
     data = json.load(JsonFile)
