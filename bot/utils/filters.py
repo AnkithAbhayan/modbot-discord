@@ -1,12 +1,7 @@
-import json
 import discord
 import discord.utils
 from bot.utils.ankith import date_time
-
-with open("resources/data.json", "r") as JsonFile:
-    data = json.load(JsonFile)
-notice_channel_id = data["notice_channel"]
-
+from bot.utils.constants import constants
 
 class filters:
     async def filtermessage(ctx, bot):
@@ -27,13 +22,21 @@ class filters:
             if item in ctx.content.lower():
                 admin_role = discord.utils.get(ctx.guild.roles, name="Admin")
                 if admin_role not in ctx.author.roles:
-                    channel = bot.get_channel(notice_channel_id)
+                    channel = bot.get_channel(constants.channel["notices"])
                     link = f"https://discordapp.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.id}"
                     embed = discord.Embed(
                         title="Notice: **language breach**",
-                        description=f"**User**: {ctx.author.mention}\n **textchannel**: {ctx.channel.mention}\n **full message**:```\n{ctx.content}\n```\n[goto message]({link})\n**date and time**: {str(date_time.time())} {str(date_time.date())}",
-                        color=0x0066FF,
-                    )
+                        description=(
+                            f"**User**: {ctx.author.mention}\n"
+                            f"**textchannel**: {ctx.channel.mention}\n"
+                            f"**full message**:```\n
+                            f"{ctx.content}\n"
+                            "```\n"
+                            f"[goto message]({link})\n"
+                            f"**date and time**: {str(date_time.time())} {str(date_time.date())}"
+                        )
+                        color=constants.colours["red"],
+                    ),
                     await channel.send(embed=embed)
 
     async def pingedunnecessary(ctx, bot):
@@ -42,15 +45,21 @@ class filters:
             link = f"https://discordapp.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.id}"
             embed = discord.Embed(
                 title="Dont do it",
-                description=str(ctx.author.mention)
-                + " please dont try to ping everyone",
-                color=0x0066FF,
+                description=f"{ctx.author.mention} please dont try to ping everyone",
+                color=constants.colours["red"],
             )
             await ctx.channel.send(embed=embed)
-            channel = bot.get_channel(notice_channel_id)
+            channel = bot.get_channel(constants.channel["notices"])
             embed = discord.Embed(
                 title="Notice: **Pinged Everyone**",
-                description=f"**{ctx.author.mention}** has tried to ping everyone.\n**channel**: {ctx.channel.mention}\n**full message**:\n```{ctx.content}\n```\n[goto message]({link})\n**date and time**: {str(date_time.date())} {str(date_time.time())}",
-                color=0x0066FF,
+                description=(
+                    f"**{ctx.author.mention}** has tried to ping everyone.\n"
+                    f"**channel**: {ctx.channel.mention}\n"
+                    f"**full message**:\n```{ctx.content}\n"
+                    "```\n"
+                    f"[goto message]({link})\n"
+                    f"**date and time**: {str(date_time.date())} {str(date_time.time())}"
+                ),
+                color=constants.colours["red"],
             )
             await channel.send(embed=embed)
