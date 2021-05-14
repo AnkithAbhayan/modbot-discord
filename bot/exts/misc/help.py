@@ -27,7 +27,7 @@ class Help(commands.Cog):
                     "```\n"
                     "$help <command>\n"
                     "```"
-                )
+                ),
                 color=constants.colours["blue"],
             )
             embed.set_footer(text="developed by ankith101.rar")
