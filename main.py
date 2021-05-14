@@ -24,8 +24,6 @@ from keep_alive import keep_alive
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
-with open("bot/data.json") as JsonFile:
-    json_data = json.load(JsonFile)
 
 bot = commands.Bot(command_prefix="$")
 bot.remove_command("help")
