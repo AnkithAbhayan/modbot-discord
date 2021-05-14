@@ -29,7 +29,8 @@ class filters:
                         description=(
                             f"**User**: {ctx.author.mention}\n"
                             f"**textchannel**: {ctx.channel.mention}\n"
-                            f"**full message**:```\n
+                            f"**full message**:\n"
+                            "```"
                             f"{ctx.content}\n"
                             "```\n"
                             f"[goto message]({link})\n"
