@@ -35,7 +35,7 @@ class filters:
                             "```\n"
                             f"[goto message]({link})\n"
                             f"**date and time**: {str(date_time.time())} {str(date_time.date())}"
-                        )
+                        ),
                         color=constants.colours["red"],
                     ),
                     await channel.send(embed=embed)
