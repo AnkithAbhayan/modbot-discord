@@ -1,5 +1,4 @@
-from datetime import *
-import os
+from datetime import datetime
 
 
 class date_time:
@@ -25,7 +24,6 @@ class date_time:
             mode = "PM"
         elif int(hours) <= 12:
             mode = "AM"
-        return_string = ""
         current_hours = int(hours)
         if int(hours) > 12:
             current_hours -= 12
@@ -43,7 +41,6 @@ class date_time:
             date = datea[1]
         month = today.strftime("%m")
         year = today.strftime("%y")
-        return_value = ""
         date_v = {
             "1": "st",
             "2": "nd",

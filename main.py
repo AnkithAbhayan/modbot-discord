@@ -1,20 +1,26 @@
 import os
 import json
-import sys
 
-import discord.utils
-import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-from bot.ankith import date_time
 
-from bot.exts.moderation_toolkit import Moderation_toolkit
-from bot.exts.self_assign_roles import self_assign_roles
-from bot.exts.fun import Fun
+from bot.exts.fun.meme import Meme
+from bot.exts.fun.sayhello import SayHello
 
-from bot.filters import filters
+from bot.exts.misc.self_assign_roles import SelfAssignRoles
+from bot.exts.misc.help import Help
+from bot.exts.misc.rules import Rules
+
+from bot.exts.moderation.warn import Warn
+from bot.exts.moderation.mute_unmute import MuteAndUnmute
+from bot.exts.moderation.kick import Kick
+from bot.exts.moderation.sendch import SendCh
+from bot.exts.moderation.senddm import SendDm
+from bot.exts.moderation.silence_unsilence import SilenceAndUnsilence
+from bot.exts.moderation.add_remove_roles import RemoveRoleAndAddRole
+
+from bot.utils.filters import filters
 from keep_alive import keep_alive
-from bot.constants import constants
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -23,9 +29,21 @@ with open("bot/data.json") as JsonFile:
 
 bot = commands.Bot(command_prefix="$")
 bot.remove_command("help")
-bot.add_cog(Fun(bot))
-bot.add_cog(Moderation_toolkit(bot))
-bot.add_cog(self_assign_roles(bot))
+
+bot.add_cog(SayHello(bot))
+bot.add_cog(Meme(bot))
+
+bot.add_cog(SelfAssignRoles(bot))
+bot.add_cog(Help(bot))
+bot.add_cog(Rules(bot))
+
+bot.add_cog(Warn(bot))
+bot.add_cog(MuteAndUnmute(bot))
+bot.add_cog(Kick(bot))
+bot.add_cog(SendCh(bot))
+bot.add_cog(SendDm(bot))
+bot.add_cog(SilenceAndUnsilence(bot))
+bot.add_cog(RemoveRoleAndAddRole(bot))
 
 
 @bot.event
