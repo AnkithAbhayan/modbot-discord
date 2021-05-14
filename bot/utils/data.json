@@ -12,26 +12,25 @@
         ],
     "helpinfo":{
         "moderation":{
-            "$sendch":"usage: `$sench <channel_id> <message>`\n*sends the message to the specific channel.*",
-            "$add_role":"usage: `$add_role <role_name> <user_id>`\n*adds a role to a person*",
-            "$remove_role":"usage: `$remove_role <role_name> <user_id>`\n*removes a role from a person*",
-            "$kick":"usage: `$kick <user_id> <reason>`\n*kicks the user from the server.*",
-            "$mute":"usage: `$mute <user_id> <reason>`\n*mutes a person (they cant send messages)*",
-            "$unmute":"usage: `$unmute <user_id>`\n*unmutes a person (they are now allowed to send messages)*",
-            "$silence":"usage: `$silence`\n*silences/mutes current channel*",
-            "$unsilence":"usage: `$unsilence`\n*unsilences/unmutes current channel*",
-    	    "$warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*",
-            "$dm":"usage: `$dm` <user_id> <message>\n*sends a message via dm to a person through the bot*"
+            "sendch":"usage: `$sench <channel_id> <message>`\n*sends the message to the specific channel.*",
+            "add_role":"usage: `$add_role <role_name> <user_id>`\n*adds a role to a person*",
+            "remove_role":"usage: `$remove_role <role_name> <user_id>`\n*removes a role from a person*",
+            "kick":"usage: `$kick <user_id> <reason>`\n*kicks the user from the server.*",
+            "mute":"usage: `$mute <user_id> <reason>`\n*mutes a person (they cant send messages)*",
+            "unmute":"usage: `$unmute <user_id>`\n*unmutes a person (they are now allowed to send messages)*",
+            "silence":"usage: `$silence`\n*silences/mutes current channel*",
+            "unsilence":"usage: `$unsilence`\n*unsilences/unmutes current channel*",
+    	    "warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*",
+            "dm":"usage: `$dm` <user_id> <message>\n*sends a message via dm to a person through the bot*"
         },
-        "meta":{
-            "$help":"usage: `$help` or `$help <specific_command>`\n*former shows all commands and info. latter shows info about specific command*",
-            "$rules":"usage: `$rules` or `$rules <rule_no>`\n*prints all the rules or individually*",
-            "$meme":"usage: `$meme`\n*sends a post from r/programmerhumor*",
-            "$sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*"
+        "misc":{
+            "help":"usage: `$help` or `$help <specific_command>`\n*former shows all commands and info. latter shows info about specific command*",
+            "rules":"usage: `$rules` or `$rules <rule_no>`\n*prints all the rules or individually*",
+            "meme":"usage: `$meme`\n*sends a post from r/programmerhumor*",
+            "sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*"
         }
     },
-    "all_commands":["$sayhello","$sendch","$kick","$remove_role","$add_role","$mute","$unmute","$help","$rules","$silence","$unsilence","$warn","$meme"],
-    "all_commands_false":["sayhello","sendch","kick","remove_role","add_role","mute","unmute","help","rules","silence","unsilence","warn","meme"],
+    "all_commands":["sayhello","sendch","kick","remove_role","add_role","mute","unmute","help","rules","silence","unsilence","warn","meme"],
     "rulesfull":"**#1.** Be nice to one another, respect each other's opinions|**#2.** Don't send hateful messages|**#3.** No nsfw or inappropriate messages should be sent|**#4.** If anyone encounters any issue, Ping the @Admin they will address the issue|**#5.** No spamming please or pinging of @everyone|**#6.** No racist or homophobic messages, photos ,videos etc|**#7.** This is an English speaking server so speak in English to the best of your ability|**#8.** Bot commands must be used only in #bots|**#9.** People who do not abide with these rules will be banned or muted from the server",
     "user_roles":["developer", "AI", "databases", "python", "game_dev", "web_dev", "C/C++", "java"],
     "guild_id":796012940477595689
