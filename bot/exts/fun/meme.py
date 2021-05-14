@@ -16,7 +16,7 @@ class Meme(commands.Cog):
         self.bot = bot
 
     @commands.command(name="meme")
-    async def meme(ctx, *args):
+    async def meme(self, ctx, *args):
         reddit = praw.Reddit(
             client_id=my_bot_id, client_secret=my_bot_secret, user_agent=my_user_agent
         )
