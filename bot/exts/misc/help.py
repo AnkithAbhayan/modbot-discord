@@ -9,8 +9,6 @@ class Help(commands.Cog):
 
     @commands.command(name="help")
     async def showhelp(self, ctx, *args):
-        all_commands = constants.json_data["all_commands"]
-        all_commands_false = constants.json_data["all_commands_false"]
         helpinfo = constants.json_data["helpinfo"]
         if len(ctx.message.content.split()) == 1:
             categories = [category for category in helpinfo]
