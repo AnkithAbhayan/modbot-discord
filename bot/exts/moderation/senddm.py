@@ -16,6 +16,8 @@ class SendDm(commands.Cog):
             array = ctx.message.content.split()
             user = array[1]
             message = array[2:len(array)]
+            print(array)
+            print(message)
             if "<@!" in user:
                 user = re.search("\d+", user).group()
             user = await ctx.guild.fetch_member(user)
