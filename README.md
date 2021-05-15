@@ -1,15 +1,12 @@
 # modbot-discord
 bot made for "AVAMOAGHOS" server  
--this bot is made for the moderator team at the server and will be used exclusively for moderating purposes.
+- this bot is made for the moderator team at the server and will be used exclusively for moderating purposes (and some other fun commands).
 ## Contribution  
--Just dont contribute,ankith is the one and only developer    
+- No.    
 ## Installation and running  
--Dont, you dont even have the discord token  
--If you dont wanna flow orders, do this:  
+- Clone the repo and cd etc etc and change the /bot/utils/data.json to make it work for your server, you're basically gonna have to run your own instance of the bot. 
 ```bash  
-git clone "https://github.com/AnkithAbhayan/modbot-discord" "modbot"/  
-cd "modbot"  
-ls -la 
+git clone "https://github.com/AnkithAbhayan/modbot-discord" modbot 
+cd modbot
+# make changes to code.
 ```
--Just dont run it please 
--this is not contributor friendly

@@ -9,4 +9,4 @@ class constants:
     user_roles = json_data["user_roles"]
     guild_id = json_data["guild_id"]
     json_data = json_data
-    channels = {"memes": 809074960890069022, "notices": 807532505137545217}
+    channels = {"memes": 809074960890069022, "notices": 807532505137545217, "bot-testing":807239459933782037}

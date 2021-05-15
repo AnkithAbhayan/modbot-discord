@@ -21,6 +21,7 @@ from bot.exts.moderation.silence_unsilence import SilenceAndUnsilence
 from bot.exts.moderation.add_remove_roles import RemoveRoleAndAddRole
 
 from bot.utils.filters import filters
+from bot.utils.constants import constants
 from keep_alive import keep_alive
 
 load_dotenv()
@@ -62,8 +63,17 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     print(f"{message.author} on {message.channel}: {message.content}")
+    if message.guild is None:
+        channel = bot.get_channel(constants.channels["bot-testing"])
+        dm_embed = discord.Embed(
+            title=f"Dm message from `{message.author}`",
+            description=message.content,
+            color=constants.colours["blue"]
+        )
+        await channel.send(embed=dm_embed)
     if message.author == bot.user:
         return
+
     await filters.filtermessage(message, bot)
     await bot.process_commands(message)
 
