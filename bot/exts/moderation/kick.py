@@ -18,7 +18,6 @@ class Kick(commands.Cog):
                 victim = re.search("\d+", victim).group()
             user = await ctx.guild.fetch_member(victim)
             name = user.name
-            await user.kick()
             # sending to initial channel
             embed = discord.Embed(
                 title="Kicked.",
@@ -50,6 +49,7 @@ class Kick(commands.Cog):
                 color=constants.colours["blue"],
             )
             await user.dm_channel.send(embed=embed)
+            await user.kick()
         else:
             embed = discord.Embed(
                 title="Invalid Permissions",

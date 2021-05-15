@@ -19,8 +19,8 @@ class SendDm(commands.Cog):
             if "<@!" in user:
                 user = re.search("\d+", user).group()
             user = await ctx.guild.fetch_member(user)
-            user.create_dm()
-            user.dm_channel.send(message)
+            await user.create_dm()
+            await user.dm_channel.send(message)
         else:
             embed = discord.Embed(
                 title="Invalid Permissions",
