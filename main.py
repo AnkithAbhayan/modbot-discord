@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 
 import discord
 from discord.ext import commands
@@ -67,8 +68,8 @@ async def on_message(message):
     if message.guild is None:
         channel = bot.get_channel(constants.channels["bot-testing"])
         dm_embed = discord.Embed(
-            title=f"Dm message from `{message.author}`",
-            description=message.content,
+            title=f"Dm from `{message.author}`:",
+            description=f"`time`:{datetime.now()}\n`content:` {message.content}",
             color=constants.colours["blue"]
         )
         await channel.send(embed=dm_embed)

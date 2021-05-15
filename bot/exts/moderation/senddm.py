@@ -20,6 +20,15 @@ class SendDm(commands.Cog):
                 user = re.search("\d+", user).group()
             user = await ctx.guild.fetch_member(user)
             await user.create_dm()
+            dm_message = discord.Embed(
+                title=f"{ctx.author}",
+                description=f"{message}",
+                color=constants.colours["blue"]
+            )
+            roles = ctx.author.roles #list of roles, lowest role first
+            roles.reverse() #list of roles, highest role first
+            top_role = roles[0]
+            dm_message.set_footer(top_role.name)
             await user.dm_channel.send(" ".join(message))
         else:
             embed = discord.Embed(
