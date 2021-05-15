@@ -4,7 +4,7 @@ import json
 class constants:
     with open("bot/utils/data.json") as JsonFile:
         json_data = json.load(JsonFile)
-    colours = {"red": 0xFF0000, "blue": 0x0066ff}
+    colours = {"red": 0xFF0000, "blue": 0x0066FF}
 
     user_roles = json_data["user_roles"]
     guild_id = json_data["guild_id"]

@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 from bot.exts.fun.meme import Meme
 from bot.exts.fun.sayhello import SayHello
+from bot.exts.fun.randomcase import RandomCase
 
 from bot.exts.misc.self_assign_roles import SelfAssignRoles
 from bot.exts.misc.help import Help
@@ -30,6 +31,7 @@ bot.remove_command("help")
 
 bot.add_cog(SayHello(bot))
 bot.add_cog(Meme(bot))
+bot.add_cog(RandomCase(bot))
 
 bot.add_cog(SelfAssignRoles(bot))
 bot.add_cog(Help(bot))

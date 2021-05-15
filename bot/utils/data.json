@@ -21,13 +21,15 @@
             "silence":"usage: `$silence`\n*silences/mutes current channel*",
             "unsilence":"usage: `$unsilence`\n*unsilences/unmutes current channel*",
     	    "warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*",
-            "dm":"usage: `$dm` <user_id> <message>\n*sends a message via dm to a person through the bot*"
+            "dm":"usage: `$dm <user_id> <message>`\n*sends a message via dm to a person through the bot*"
         },
         "misc":{
-            "help":"usage: `$help` or `$help <specific_command>`\n*former shows all commands and info. latter shows info about specific command*",
+            "help":"usage: `$help` or `$help <specific_command/category>`\n*former shows all commands and info. latter shows info about specific command*",
             "rules":"usage: `$rules` or `$rules <rule_no>`\n*prints all the rules or individually*",
+            "$get_role":"usage: `$get_role <role>`\n*assigns a give role to the user*",
             "meme":"usage: `$meme`\n*sends a post from r/programmerhumor*",
-            "sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*"
+            "sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*",
+            "randomcase":"usage: `$randomcase <string>`*resends a given string with mixed up cases*"
         }
     },
     "all_commands":["sayhello","sendch","kick","remove_role","add_role","mute","unmute","help","rules","silence","unsilence","warn","meme"],

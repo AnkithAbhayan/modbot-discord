@@ -3,6 +3,7 @@ import discord.utils
 from bot.utils.ankith import date_time
 from bot.utils.constants import constants
 
+
 class filters:
     async def filtermessage(ctx, bot):
         if "@everyone" in ctx.content:
@@ -24,20 +25,22 @@ class filters:
                 if admin_role not in ctx.author.roles:
                     channel = bot.get_channel(constants.channel["notices"])
                     link = f"https://discordapp.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.id}"
-                    embed = discord.Embed(
-                        title="Notice: **language breach**",
-                        description=(
-                            f"**User**: {ctx.author.mention}\n"
-                            f"**textchannel**: {ctx.channel.mention}\n"
-                            f"**full message**:\n"
-                            "```"
-                            f"{ctx.content}\n"
-                            "```\n"
-                            f"[goto message]({link})\n"
-                            f"**date and time**: {str(date_time.time())} {str(date_time.date())}"
+                    embed = (
+                        discord.Embed(
+                            title="Notice: **language breach**",
+                            description=(
+                                f"**User**: {ctx.author.mention}\n"
+                                f"**textchannel**: {ctx.channel.mention}\n"
+                                f"**full message**:\n"
+                                "```"
+                                f"{ctx.content}\n"
+                                "```\n"
+                                f"[goto message]({link})\n"
+                                f"**date and time**: {str(date_time.time())} {str(date_time.date())}"
+                            ),
+                            color=constants.colours["red"],
                         ),
-                        color=constants.colours["red"],
-                    ),
+                    )
                     await channel.send(embed=embed)
 
     async def pingedunnecessary(ctx, bot):

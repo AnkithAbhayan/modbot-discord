@@ -21,7 +21,7 @@ class SelfAssignRoles(commands.Cog):
                     "$get_role <role_name>\n"
                     "```\n"
                     "**Example**: `$get_role developer` gives you access to all programming related channels!\n"
-                    f"**All self-assignable roles**: `{', '.join(constants.json_data['user_roles'])}`"
+                    f"**All self-assignable roles**: `{', '.join(constants.user_roles)}`"
                 ),
                 color=constants.colours["blue"],
             )
@@ -56,7 +56,7 @@ class SelfAssignRoles(commands.Cog):
             await ctx.send(ctx.author.mention)
             return
 
-        if array[1] in constants.json_data["user_roles"]:
+        if array[1] in constants.user_roles:
             role = discord.utils.get(ctx.guild.roles, name=array[1])
             if role in ctx.author.roles:
                 already_have_the_role = discord.Embed(
@@ -78,7 +78,7 @@ class SelfAssignRoles(commands.Cog):
         else:
             error_in_role_name = discord.Embed(
                 title=":x: Invalid role.",
-                description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\n**All self-assignable roles**: `{', '.join(constants.json_data['user_roles'])}`",
+                description=f"The role name you entered is incorrect!\n Correct usage:\n ```\n$get_role <role_name>\n```\n**All self-assignable roles**: `{', '.join(constants.user_roles)}`",
                 color=constants.colours["red"],
             )
             await ctx.channel.send(embed=error_in_role_name)
