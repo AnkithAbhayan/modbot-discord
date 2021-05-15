@@ -29,7 +29,7 @@
             "$get_role":"usage: `$get_role <role>`\n*assigns a give role to the user*",
             "meme":"usage: `$meme`\n*sends a post from r/programmerhumor*",
             "sayhello":"usage: `$sayhello`\n*sends a message 'hello' with a ping*",
-            "randomcase":"usage: `$randomcase <string>`*resends a given string with mixed up cases*"
+            "randomcase":"usage: `$randomcase <string>`\n*resends a given string with mixed up cases*"
         }
     },
     "all_commands":["sayhello","sendch","kick","remove_role","add_role","mute","unmute","help","rules","silence","unsilence","warn","meme"],

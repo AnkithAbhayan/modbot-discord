@@ -20,7 +20,7 @@ class Help(commands.Cog):
                     "```\n"
                     "$help <category>\n"
                     "```\n\n"
-                    f"**All the categories**: `{', '.join(categories)}`"
+                    f"**All the categories**: `{', '.join(categories)}`\n"
                     f"If you're just looking for help info on a specific command:\n"
                     "```\n"
                     "$help <command>\n"
