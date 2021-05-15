@@ -28,7 +28,7 @@ class SendDm(commands.Cog):
             roles = ctx.author.roles #list of roles, lowest role first
             roles.reverse() #list of roles, highest role first
             top_role = roles[0]
-            dm_message.set_footer(top_role.name)
+            dm_message.set_footer(text=top_role.name)
             await user.dm_channel.send(" ".join(message))
         else:
             embed = discord.Embed(

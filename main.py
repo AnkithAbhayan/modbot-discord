@@ -69,7 +69,13 @@ async def on_message(message):
         channel = bot.get_channel(constants.channels["bot-testing"])
         dm_embed = discord.Embed(
             title=f"Dm from `{message.author}`:",
-            description=f"`time`:{datetime.now()}\n`content:` {message.content}",
+            description=(
+                f"`time`:`{datetime.now()}`\n"
+                f"`content:`\n"
+                "```\n"
+                f"{message.content}\n"
+                "```"
+            ),
             color=constants.colours["blue"]
         )
         await channel.send(embed=dm_embed)
