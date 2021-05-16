@@ -21,9 +21,6 @@ class SendDm(commands.Cog):
             user = await ctx.guild.fetch_member(user)
             await user.create_dm()
             dm_message = discord.Embed(
-                title=f"{ctx.author.name}",
-                icon=discord.Embed.Empty,
-                icon_url=f"{ctx.author.avatar_url}",
                 description=f"{message}",
                 color=constants.colours["blue"]
             )
