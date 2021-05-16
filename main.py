@@ -74,11 +74,11 @@ async def on_message(message):
         if message.author == bot.user:
             my_embed = discord.Embed(
                 title="Message successfully sent :white_check_mark:",
-                description=f"`time`: `{datetime.now()}`",
+                description=(
+                    f"`Sent via`: `{message.channel}`\n" 
+                    f"`time`: `{datetime.now()}`"
+                )
                 color=constants.colours["blue"]
-            )
-            my_embed.set_author(
-                name=f"`Sent via`: `{message.channel}`", 
             )
             my_embed.set_footer(text="dm message command.")
             channel = bot.get_channel(constants.channels["bot-testing"])
