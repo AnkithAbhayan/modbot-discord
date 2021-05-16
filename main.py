@@ -77,7 +77,7 @@ async def on_message(message):
                 description=(
                     f"`Sent via`: `{message.channel}`\n" 
                     f"`time`: `{datetime.now()}`"
-                )
+                ),
                 color=constants.colours["blue"]
             )
             my_embed.set_footer(text="dm message command.")
