@@ -27,6 +27,11 @@ class SendDm(commands.Cog):
                 description=f"{message}",
                 color=constants.colours["blue"]
             )
+            dm_message.set_author(
+                name=ctx.author.name, 
+                url=Embed.Empty, 
+                icon_url=ctx.author.avatar_url
+            )
             roles = ctx.author.roles #list of roles, lowest role first
             roles.reverse() #list of roles, highest role first
             top_role = roles[0]
