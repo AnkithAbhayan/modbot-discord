@@ -29,7 +29,7 @@ class SendDm(commands.Cog):
             roles.reverse() #list of roles, highest role first
             top_role = roles[0]
             dm_message.set_footer(text=top_role.name)
-            await user.dm_channel.send(" ".join(message))
+            await user.dm_channel.send(embed=dm_message)
         else:
             embed = discord.Embed(
                 title="Invalid Permissions",
