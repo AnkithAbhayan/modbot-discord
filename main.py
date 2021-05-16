@@ -80,7 +80,7 @@ async def on_message(message):
             dm_embed = discord.Embed(
                 title=f"Dm from `{message.author}`:",
                 icon=discord.Embed.Empty,
-                icon_url=message.author.avatar_url",
+                icon_url=message.author.avatar_url,
                 description=(
                     f"`time`:`{datetime.now()}`\n"
                     f"`content:`\n"
