@@ -76,7 +76,7 @@ async def on_message(message):
                 title="Message successfully sent :white_check_mark:",
                 description=(
                     f"`Sent via`: `{message.channel}`\n" 
-                    f"`time`: `{datetime.now()}`"
+                    f"`date and time`: `{datetime.now()}`"
                 ),
                 color=constants.colours["blue"]
             )
