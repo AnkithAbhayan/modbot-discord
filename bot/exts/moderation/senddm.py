@@ -22,6 +22,7 @@ class SendDm(commands.Cog):
             await user.create_dm()
             dm_message = discord.Embed(
                 title=f"{ctx.author}",
+                icon=discord.Embed.Empty,
                 icon_url=f"{ctx.author.avatar_url}",
                 description=f"{message}",
                 color=constants.colours["blue"]
