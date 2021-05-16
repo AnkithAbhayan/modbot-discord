@@ -85,8 +85,8 @@ async def on_message(message):
             dm_embed = discord.Embed(
                 title=f"Dm from `{message.author}`:",
                 description=(
-                    f"`time`:`{datetime.now()}`\n"
-                    f"`content:`\n"
+                    f"`time`: `{datetime.now()}`\n"
+                    f"`content`:\n"
                     "```\n"
                     f"{message.content}\n"
                     "```"
