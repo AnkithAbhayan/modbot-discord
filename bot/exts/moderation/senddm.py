@@ -1,5 +1,6 @@
 import discord
 import discord.utils
+from datetime import datetime
 from bot.utils.constants import constants
 from discord.ext import commands
 import re
@@ -32,7 +33,7 @@ class SendDm(commands.Cog):
             roles = ctx.author.roles #list of roles, lowest role first
             roles.reverse() #list of roles, highest role first
             top_role = roles[0]
-            dm_message.set_footer(text=top_role.name)
+            dm_message.set_footer(text=f"{top_role.name} • {datetime.today().strftime('%d-%m-%y')}")
             await user.dm_channel.send(embed=dm_message)
         else:
             embed = discord.Embed(
