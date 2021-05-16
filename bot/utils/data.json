@@ -21,7 +21,7 @@
             "silence":"usage: `$silence`\n*silences/mutes current channel*",
             "unsilence":"usage: `$unsilence`\n*unsilences/unmutes current channel*",
     	    "warn":"usage: `$warn <user_id> <reason>`\n*applies warning to a user*",
-            "dm":"usage: `$dm <user_id> <message>`\n*sends a message via dm to a person through the bot*"
+            "send_dm":"usage: `$dm <user_id> <message>`\n*sends a message via dm to a person through the bot*"
         },
         "misc":{
             "help":"usage: `$help` or `$help <specific_command/category>`\n*former shows all commands and info. latter shows info about specific command*",
