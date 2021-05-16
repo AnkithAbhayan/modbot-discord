@@ -66,21 +66,30 @@ async def on_ready():
 async def on_message(message):
     print(f"{message.author} on {message.channel}: {message.content}")
     if message.guild is None:
-        channel = bot.get_channel(constants.channels["bot-testing"])
-        dm_embed = discord.Embed(
-            title=f"Dm from `{message.author}`:",
-            description=(
-                f"`time`:`{datetime.now()}`\n"
-                f"`content:`\n"
-                "```\n"
-                f"{message.content}\n"
-                "```"
-            ),
-            color=constants.colours["blue"]
-        )
-        await channel.send(embed=dm_embed)
-    if message.author == bot.user:
-        return
+        if message.author == bot.user:
+            my_embed = discord.Embed(
+                title="Message successfully sent :white_check_mark:",
+                description=f"`Receiver`: {message.channel}\n`title`: {datetime.now()}",
+                color=constants.colours["blue"]
+            )
+            my_embed.set_footer(text="dm message command.")
+            channel = bot.get_channel(constants.channels["bot-testing"])
+            await channel.send(embed=my_embed)
+        else:
+            channel = bot.get_channel(constants.channels["bot-testing"])
+            dm_embed = discord.Embed(
+                title=f"Dm from `{message.author}`:",
+                description=(
+                    f"`time`:`{datetime.now()}`\n"
+                    f"`content:`\n"
+                    "```\n"
+                    f"{message.content}\n"
+                    "```"
+                ),
+                color=constants.colours["blue"]
+            )
+            await channel.send(embed=dm_embed)
+
 
     await filters.filtermessage(message, bot)
     await bot.process_commands(message)
