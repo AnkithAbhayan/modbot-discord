@@ -86,6 +86,7 @@ async def on_message(message):
                     f"{message.content}\n"
                     "```"
                 ),
+                icon_url=message.author.avatar_url,
                 color=constants.colours["blue"]
             )
             await channel.send(embed=dm_embed)
