@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 
 import discord
+from discord import Intents
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -30,6 +31,10 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 bot = commands.Bot(command_prefix="$")
+
+intents = Intents.default()
+intents.members = True
+
 bot.remove_command("help")
 
 bot.add_cog(SayHello(bot))
