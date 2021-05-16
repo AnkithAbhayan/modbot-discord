@@ -29,7 +29,7 @@ class SendDm(commands.Cog):
             )
             dm_message.set_author(
                 name=ctx.author.name, 
-                url=Embed.Empty, 
+                url=discord.Embed.Empty, 
                 icon_url=ctx.author.avatar_url
             )
             roles = ctx.author.roles #list of roles, lowest role first
