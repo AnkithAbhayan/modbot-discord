@@ -74,7 +74,7 @@ async def on_message(message):
         if message.author == bot.user:
             my_embed = discord.Embed(
                 title="Message successfully sent :white_check_mark:",
-                description=f"`Receiver`: {message.channel}\n`title`: {datetime.now()}",
+                description=f"`Receiver`: `{message.channel}`\n`time`: `{datetime.now()}`",
                 color=constants.colours["blue"]
             )
             my_embed.set_footer(text="dm message command.")
