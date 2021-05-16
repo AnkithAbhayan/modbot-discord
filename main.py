@@ -30,10 +30,10 @@ from keep_alive import keep_alive
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-bot = commands.Bot(command_prefix="$")
-
 intents = Intents.default()
 intents.members = True
+
+bot = commands.Bot(command_prefix="$", intents=intents)
 
 bot.remove_command("help")
 
