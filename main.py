@@ -84,8 +84,6 @@ async def on_message(message):
             channel = bot.get_channel(constants.channels["bot-testing"])
             dm_embed = discord.Embed(
                 title=f"Dm from `{message.author}`:",
-                icon=discord.Embed.Empty,
-                icon_url=message.author.avatar_url,
                 description=(
                     f"`time`:`{datetime.now()}`\n"
                     f"`content:`\n"
@@ -95,6 +93,7 @@ async def on_message(message):
                 ),
                 color=constants.colours["blue"]
             )
+            dm_embed.set_thumbnail(url=message.author.avatar_url)
             await channel.send(embed=dm_embed)
 
 
